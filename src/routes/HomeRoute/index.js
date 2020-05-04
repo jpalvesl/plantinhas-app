@@ -12,7 +12,7 @@ const HomeStack = createStackNavigator();
 function HomeRoute() {
   return (
     <HomeStack.Navigator
-    initialRouteName="FolderInside"
+      initialRouteName="EditItem"
       screenOptions={{
         headerTitleAlign: 'center',
         headerTintColor: '#fff',
@@ -32,19 +32,22 @@ function HomeRoute() {
         name="CreateFolder" 
         component={CreateFolderScreen}
         options={{
-          title: 'Adicionar nova pasta'
+          title: 'Adicionar nova pasta',
         }} 
       />
       <HomeStack.Screen 
         name="FolderInside" 
         component={FolderInsideScreen} 
         options={{
-          title: 'Plantas não sincronizadas'
+          title: 'Plantas não sincronizadas',
         }}
       />
       <HomeStack.Screen 
         name="EditItem" 
         component={EditItemScreen} 
+        options={{
+          title: 'Editar planta',
+        }}
       />
       <HomeStack.Screen 
         name="AddItem" 
