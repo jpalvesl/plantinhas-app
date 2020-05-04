@@ -12,7 +12,7 @@ const HomeStack = createStackNavigator();
 function HomeRoute() {
   return (
     <HomeStack.Navigator
-      initialRouteName="EditItem"
+      initialRouteName="AddItem"
       screenOptions={{
         headerTitleAlign: 'center',
         headerTintColor: '#fff',
@@ -52,6 +52,9 @@ function HomeRoute() {
       <HomeStack.Screen 
         name="AddItem" 
         component={AddItemScreen} 
+        options={{
+          headerShown: false,
+        }}
       />
     </HomeStack.Navigator>
   );
