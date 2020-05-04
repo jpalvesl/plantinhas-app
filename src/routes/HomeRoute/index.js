@@ -12,6 +12,7 @@ const HomeStack = createStackNavigator();
 function HomeRoute() {
   return (
     <HomeStack.Navigator
+    initialRouteName="FolderInside"
       screenOptions={{
         headerTitleAlign: 'center',
         headerTintColor: '#fff',
@@ -37,6 +38,9 @@ function HomeRoute() {
       <HomeStack.Screen 
         name="FolderInside" 
         component={FolderInsideScreen} 
+        options={{
+          title: 'Plantas não sincronizadas'
+        }}
       />
       <HomeStack.Screen 
         name="EditItem" 
