@@ -29,7 +29,10 @@ function HomeRoute() {
       />
       <HomeStack.Screen 
         name="CreateFolder" 
-        component={CreateFolderScreen} 
+        component={CreateFolderScreen}
+        options={{
+          title: 'Adicionar nova pasta'
+        }} 
       />
       <HomeStack.Screen 
         name="FolderInside" 
