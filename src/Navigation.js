@@ -35,6 +35,16 @@ function Navigation() {
             return <Icon name={name} size={size} color={color} />
           }
         })}
+        tabBarOptions={{
+          labelPosition: "below-icon",
+          style: {
+            backgroundColor: '#fff',
+            borderTopColor: 'rgba(255, 255, 255, 0.2)',
+            justifyContent: 'center',
+          },
+          activeTintColor: '#00f',
+          inactiveTintColor: '#000',
+        }}
       >
         <Tab.Screen name="Home" component={HomeRoute} />
         <Tab.Screen name="List" component={ListRoute} />
