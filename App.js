@@ -6,7 +6,7 @@ import Navigation from './src/Navigation';
 function App() {
   return (
     <>
-      <StatusBar />
+      <StatusBar barStyle="light-content" backgroundColor="#000" />
       <Navigation />
     </>
   );

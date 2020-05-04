@@ -11,12 +11,38 @@ const HomeStack = createStackNavigator();
 
 function HomeRoute() {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="CreateFolder" component={CreateFolderScreen} />
-      <HomeStack.Screen name="FolderInside" component={FolderInsideScreen} />
-      <HomeStack.Screen name="EditItem" component={EditItemScreen} />
-      <HomeStack.Screen name="AddItem" component={AddItemScreen} />
+    <HomeStack.Navigator
+      screenOptions={{
+        headerTitleAlign: 'center',
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: '#000',
+        }
+      }}
+    >
+      <HomeStack.Screen 
+        name="Home" 
+        component={HomeScreen}
+        options={{
+          title: 'Pastas',
+        }}
+      />
+      <HomeStack.Screen 
+        name="CreateFolder" 
+        component={CreateFolderScreen} 
+      />
+      <HomeStack.Screen 
+        name="FolderInside" 
+        component={FolderInsideScreen} 
+      />
+      <HomeStack.Screen 
+        name="EditItem" 
+        component={EditItemScreen} 
+      />
+      <HomeStack.Screen 
+        name="AddItem" 
+        component={AddItemScreen} 
+      />
     </HomeStack.Navigator>
   );
 }
