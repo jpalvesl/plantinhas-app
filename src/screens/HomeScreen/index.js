@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
-import { Container, List, ItemList, City, State, AddButton } from './styles';
+import { Container, List, ItemList, ItemContent, City, State, AddButton } from './styles';
 
 function HomeScreen() {
   const navigation = useNavigation();
@@ -18,9 +18,11 @@ function HomeScreen() {
         keyExtractor={value => String(value)}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: value }) => (
-          <ItemList>
-            <City>Cidade {value}</City>
-            <State>PB</State>
+          <ItemList onPress={() => navigation.navigate('FolderInside')}>
+            <ItemContent>
+              <City>Cidade {value}</City>
+              <State>PB</State>
+            </ItemContent>
           </ItemList>
           )
         }

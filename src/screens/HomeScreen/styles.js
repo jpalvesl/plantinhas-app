@@ -10,7 +10,10 @@ export const List = styled.FlatList`
   margin-top: 24px;
 `;
 
-export const ItemList = styled.View`
+export const ItemList = styled.TouchableHighlight`
+`;
+
+export const ItemContent = styled.View`
   background: #F8D3D3;
   height: 80px;
   border-radius: 8px;
@@ -20,6 +23,7 @@ export const ItemList = styled.View`
   align-items: center;
   justify-content: space-between;
 `;
+
 
 
 export const City = styled.Text`
