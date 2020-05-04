@@ -2,13 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Route</Text>
-    </View>
-  );
-}
+import HomeScreen from '../../screens/HomeScreen';
 
 const HomeStack = createStackNavigator();
 
