@@ -1,9 +1,16 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { Container, List, ItemList, City, State, AddButton } from './styles';
 
 function HomeScreen() {
+  const navigation = useNavigation();
+
+  function NavigateToCreateFolder() {
+    navigation.navigate('CreateFolder')
+  }
+
   return (
     <Container>
       <List 
@@ -18,7 +25,7 @@ function HomeScreen() {
           )
         }
       />
-      <AddButton onPress={() => alert('teste')}>
+      <AddButton onPress={NavigateToCreateFolder}>
         <Ionicons name="ios-add" size={30} />
       </AddButton>
     </Container>
