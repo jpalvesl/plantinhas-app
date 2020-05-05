@@ -47,12 +47,12 @@ function EditItemScreen() {
         </DiameterInput>
         <SubmitArea>
           <SubmitButtonLocal onPress={handleAddOnline}>
-            <TextContent>Finalizar edição</TextContent>
+            <TextContent>Adicionar local</TextContent>
             <Ionicons name="ios-leaf" size={14} />
           </SubmitButtonLocal>
 
           <SubmitButtonOnline onPress={handleAddOnline}>
-            <TextContent>Finalizar edição</TextContent>
+            <TextContent>Adicionar online</TextContent>
             <Ionicons name="ios-leaf" size={14} />
           </SubmitButtonOnline>
         </SubmitArea>
