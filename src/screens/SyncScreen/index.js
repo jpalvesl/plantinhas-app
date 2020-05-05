@@ -1,11 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+
+import { Container, SyncButton, ButtonLabel } from './styles';
 
 function SyncScreen() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Sync Route</Text>
-    </View>
+    <Container>
+      <SyncButton onPress={() => alert('Sincronizando dados')}>
+        <ButtonLabel>Sincronizar dados</ButtonLabel>
+      </SyncButton>
+    </Container>
   );
 }
 

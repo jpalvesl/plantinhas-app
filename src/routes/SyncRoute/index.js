@@ -8,7 +8,13 @@ const SyncStack = createStackNavigator();
 function SyncRoute() {
   return (
     <SyncStack.Navigator>
-      <SyncStack.Screen name="Sync" component={SyncScreen} />
+      <SyncStack.Screen 
+        name="Sync" 
+        component={SyncScreen} 
+        options={{
+          headerShown: false,
+        }}
+      />
     </SyncStack.Navigator>
   );
 }
