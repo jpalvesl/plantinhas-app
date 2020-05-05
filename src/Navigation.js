@@ -28,7 +28,7 @@ function Navigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName="List"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             const { lib: Icon, name } = icons[route.name]
