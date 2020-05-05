@@ -18,12 +18,20 @@ function ListInside() {
         }
       }}
     >
-      <Stack.Screen name="List" component={ListScreen} 
+      <Stack.Screen 
+        name="List" 
+        component={ListScreen} 
         options={{
           title: 'Plantas sincronizadas',
         }}
       />
-      <Stack.Screen name="ItemInfo" component={ItemInfoScreen} />
+      <Stack.Screen 
+        name="ItemInfo" 
+        component={ItemInfoScreen} 
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 }
