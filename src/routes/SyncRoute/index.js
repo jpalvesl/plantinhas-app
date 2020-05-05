@@ -5,7 +5,7 @@ import SyncScreen from '../../screens/SyncScreen';
 
 const SyncStack = createStackNavigator();
 
-function HomeRoute() {
+function SyncRoute() {
   return (
     <SyncStack.Navigator>
       <SyncStack.Screen name="Sync" component={SyncScreen} />
@@ -13,5 +13,5 @@ function HomeRoute() {
   );
 }
 
-export default HomeRoute;
+export default SyncRoute;
 

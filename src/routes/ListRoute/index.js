@@ -6,7 +6,7 @@ import ItemInfoScreen from '../../screens/ItemInfoScreen';
 
 const ListStack = createStackNavigator();
 
-function HomeRoute() {
+function ListRoute() {
   return (
     <ListStack.Navigator>
       <ListStack.Screen name="List" component={ListScreen} />
@@ -15,5 +15,5 @@ function HomeRoute() {
   );
 }
 
-export default HomeRoute;
+export default ListRoute;
 
