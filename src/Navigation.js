@@ -28,7 +28,7 @@ function Navigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Sync"
+        initialRouteName="Home"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             const { lib: Icon, name } = icons[route.name]
@@ -46,9 +46,28 @@ function Navigation() {
           inactiveTintColor: '#000',
         }}
       >
-        <Tab.Screen name="Home" component={HomeRoute} />
-        <Tab.Screen name="List" component={ListRoute} />
-        <Tab.Screen name="Sync" component={SyncRoute} />
+        <Tab.Screen 
+          name="Home" 
+          component={HomeRoute} 
+          options={{
+            title: 'Início',
+          }}
+        />
+        <Tab.Screen 
+          name="List" 
+          component={ListRoute} 
+          options={{
+            title: 'Lista sincronizada',
+          }}
+        />
+        <Tab.Screen 
+          name="Sync" 
+          component={SyncRoute} 
+          options={{
+            title: 'Sincronizar',
+            
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
