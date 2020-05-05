@@ -9,8 +9,20 @@ const Stack = createStackNavigator();
 
 function ListInside() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="List" component={ListScreen} />
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: '#fff',
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#000'
+        }
+      }}
+    >
+      <Stack.Screen name="List" component={ListScreen} 
+        options={{
+          title: 'Plantas sincronizadas',
+        }}
+      />
       <Stack.Screen name="ItemInfo" component={ItemInfoScreen} />
     </Stack.Navigator>
   );
