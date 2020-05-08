@@ -12,7 +12,7 @@ const HomeStack = createStackNavigator();
 function HomeRoute() {
   return (
     <HomeStack.Navigator
-      initialRouteName="HomeScreen"
+      initialRouteName="FolderInside"
       screenOptions={{
         headerTitleAlign: 'center',
         headerTintColor: '#fff',
