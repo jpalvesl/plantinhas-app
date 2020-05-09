@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { AsyncStorage } from 'react-native';
 
@@ -8,23 +8,28 @@ import { Container, CheckButton, Input, InputView } from './styles';
 function CreateFolderScreen() {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
-  const [folders, setFolders] = useState([]);
-
+  // const [folders, setFolders] = useState([]);
+  
   const navigation = useNavigation();
+  const route = useRoute();
+
+  const folders = route.params.folders
 
   useEffect(() => {
-    async function LoadFolders() {
-      try {
-        const data = await AsyncStorage.getItem('folders')
-        if (data !== null) {
-          setFolders(JSON.parse(data))
-        }         
-      } catch (error) {
-        alert('Erro ao carregar pastas, tente novamente')
-      }
-    }
+    // async function LoadFolders() {
+    //   try {
+    //     const data = await AsyncStorage.getItem('folders')
+    //     if (data !== null) {
+    //       setFolders(JSON.parse(data))
+    //     }         
+    //   } catch (error) {
+    //     alert('Erro ao carregar pastas, tente novamente')
+    //   }
+    // }
 
-    LoadFolders()
+    // LoadFolders()
+
+    console.log('Hey', folders)
   }, [])
 
   function folderVerification(folders, fold) {
@@ -36,12 +41,13 @@ function CreateFolderScreen() {
   async function addFolder() {
     if (folderVerification(folders, {city, state})) {
       try {
+        folders.push({city, state})
         await AsyncStorage.setItem(
           'folders',
-          JSON.stringify([...folders, {city, state}])
+          JSON.stringify(folders)
         )
       } catch (error) {
-        console.log('error')
+        alert('Erro ao adicionar nova pasta, tente novamente')
       }
       navigation.reset({
         index: 0,

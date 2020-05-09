@@ -10,6 +10,19 @@ export const List = styled.FlatList`
   margin-top: 24px;
 `;
 
+export const Counter = styled.Text`
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  margin: 0 8px;
+`;
+
+export const Bold = styled.Text`
+  font-weight: bold;
+`;
+
+
+
 export const ItemList = styled.TouchableHighlight`
 `;
 

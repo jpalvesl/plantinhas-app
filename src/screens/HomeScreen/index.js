@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { AsyncStorage } from 'react-native';
 
-import { Container, List, ItemList, ItemContent, City, State, AddButton } from './styles';
+import { Container, Counter, Bold, List, ItemList, ItemContent, City, State, AddButton } from './styles';
 
 function HomeScreen() {
   const [folders, setFolders] = useState([]);
@@ -25,15 +25,15 @@ function HomeScreen() {
     }
 
     LoadFolders()
-    console.log(folders)
   }, [])
 
   function NavigateToCreateFolder() {
-    navigation.navigate('CreateFolder')
+    navigation.navigate('CreateFolder', { folders })
   }
 
   return (
     <Container>
+      <Counter>Existem <Bold>{folders.length}</Bold> pastas</Counter>
       <List 
         data={folders}
         keyExtractor={(value) => String(value.city+value.state)}
