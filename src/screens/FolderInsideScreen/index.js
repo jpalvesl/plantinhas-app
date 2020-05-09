@@ -11,121 +11,121 @@ function FolderInsideScreen() {
   const navigation = useNavigation();
   const route = useRoute();
 
-  const { city, state } = route.params.folder;
+  const folder = route.params.folder;
 
   useEffect(() => {
     function plantFilter(arrayPlants) {
-      return arrayPlants.filter((plant) => (plant.city === city && plant.uf === state))
+      return arrayPlants.filter((plant) => (plant.city === folder.city && plant.uf === folder.state))
     }
 
     async function LoadPlants() {
       try {
-        await AsyncStorage.setItem('plants', JSON.stringify(
-          [
-  {
-    "diameter": [
-      4.2,
-      2,
-      5.1
-    ],
-    "_id": "5eb5277950b86007831855b4",
-    "name": "Planta 1",
-    "city": "Campina Grande",
-    "uf": "PB",
-    "string": false,
-    "height": 1.25,
-    "latitude": 0,
-    "longitude": 3,
-    "date": "2020-05-08T09:33:45.504Z",
-    "__v": 0
-  },
-  {
-    "diameter": [
-      4.2,
-      2,
-      5.1
-    ],
-    "_id": "5eb5278250b86007831855b5",
-    "name": "Planta 2",
-    "city": "Campina Grande",
-    "uf": "PB",
-    "string": false,
-    "height": 1.25,
-    "latitude": 0,
-    "longitude": 3,
-    "date": "2020-05-08T09:33:54.378Z",
-    "__v": 0
-  },
-  {
-    "diameter": [
-      4.2,
-      2,
-      5.1
-    ],
-    "_id": "5eb5279050b86007831855b6",
-    "name": "Planta 3",
-    "city": "João Pessoa",
-    "uf": "PB",
-    "string": false,
-    "height": 1.25,
-    "latitude": 0,
-    "longitude": 3,
-    "date": "2020-05-08T09:34:08.531Z",
-    "__v": 0
-  },
-  {
-    "diameter": [
-      4.2,
-      2,
-      5.1
-    ],
-    "_id": "5eb5279450b86007831855b7",
-    "name": "Planta 4",
-    "city": "João Pessoa",
-    "uf": "PB",
-    "string": false,
-    "height": 1.25,
-    "latitude": 0,
-    "longitude": 3,
-    "date": "2020-05-08T09:34:12.033Z",
-    "__v": 0
-  },
-  {
-    "diameter": [
-      4.2,
-      2,
-      5.1
-    ],
-    "_id": "5eb527a550b86007831855b8",
-    "name": "Planta 5",
-    "city": "Recife",
-    "uf": "PE",
-    "string": false,
-    "height": 1.25,
-    "latitude": 0,
-    "longitude": 3,
-    "date": "2020-05-08T09:34:29.193Z",
-    "__v": 0
-  },
-  {
-    "diameter": [
-      4.2,
-      2,
-      5.1
-    ],
-    "_id": "5eb527ab50b86007831855b9",
-    "name": "Planta 6",
-    "city": "Recife",
-    "uf": "PE",
-    "string": false,
-    "height": 1.25,
-    "latitude": 0,
-    "longitude": 3,
-    "date": "2020-05-08T09:34:34.849Z",
-    "__v": 0
-  }
-]
-        ))
+//         await AsyncStorage.setItem('plants', JSON.stringify(
+//           [
+//   {
+//     "diameter": [
+//       4.2,
+//       2,
+//       5.1
+//     ],
+//     "_id": "5eb5277950b86007831855b4",
+//     "name": "Planta 1",
+//     "city": "Campina Grande",
+//     "uf": "PB",
+//     "string": false,
+//     "height": 1.25,
+//     "latitude": 0,
+//     "longitude": 3,
+//     "date": "2020-05-08T09:33:45.504Z",
+//     "__v": 0
+//   },
+//   {
+//     "diameter": [
+//       4.2,
+//       2,
+//       5.1
+//     ],
+//     "_id": "5eb5278250b86007831855b5",
+//     "name": "Planta 2",
+//     "city": "Campina Grande",
+//     "uf": "PB",
+//     "string": false,
+//     "height": 1.25,
+//     "latitude": 0,
+//     "longitude": 3,
+//     "date": "2020-05-08T09:33:54.378Z",
+//     "__v": 0
+//   },
+//   {
+//     "diameter": [
+//       4.2,
+//       2,
+//       5.1
+//     ],
+//     "_id": "5eb5279050b86007831855b6",
+//     "name": "Planta 3",
+//     "city": "João Pessoa",
+//     "uf": "PB",
+//     "string": false,
+//     "height": 1.25,
+//     "latitude": 0,
+//     "longitude": 3,
+//     "date": "2020-05-08T09:34:08.531Z",
+//     "__v": 0
+//   },
+//   {
+//     "diameter": [
+//       4.2,
+//       2,
+//       5.1
+//     ],
+//     "_id": "5eb5279450b86007831855b7",
+//     "name": "Planta 4",
+//     "city": "João Pessoa",
+//     "uf": "PB",
+//     "string": false,
+//     "height": 1.25,
+//     "latitude": 0,
+//     "longitude": 3,
+//     "date": "2020-05-08T09:34:12.033Z",
+//     "__v": 0
+//   },
+//   {
+//     "diameter": [
+//       4.2,
+//       2,
+//       5.1
+//     ],
+//     "_id": "5eb527a550b86007831855b8",
+//     "name": "Planta 5",
+//     "city": "Recife",
+//     "uf": "PE",
+//     "string": false,
+//     "height": 1.25,
+//     "latitude": 0,
+//     "longitude": 3,
+//     "date": "2020-05-08T09:34:29.193Z",
+//     "__v": 0
+//   },
+//   {
+//     "diameter": [
+//       4.2,
+//       2,
+//       5.1
+//     ],
+//     "_id": "5eb527ab50b86007831855b9",
+//     "name": "Planta 6",
+//     "city": "Recife",
+//     "uf": "PE",
+//     "string": false,
+//     "height": 1.25,
+//     "latitude": 0,
+//     "longitude": 3,
+//     "date": "2020-05-08T09:34:34.849Z",
+//     "__v": 0
+//   }
+// ]
+//         ))
 
         const data = await AsyncStorage.getItem('plants')
         //console.log(data)
@@ -153,7 +153,7 @@ function FolderInsideScreen() {
   }
 
   function NavigateToAddItem(){
-    navigation.navigate('AddItem')
+    navigation.navigate('AddItem', { folder })
   }
   
   return (
