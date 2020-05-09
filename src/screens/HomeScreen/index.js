@@ -39,7 +39,7 @@ function HomeScreen() {
         keyExtractor={(value) => String(value.city+value.state)}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: folder }) => (
-          <ItemList onPress={() => navigation.navigate('FolderInside')}>
+          <ItemList onPress={() => navigation.navigate('FolderInside', { folder })}>
             <ItemContent>
               <City>{folder.city}</City>
               <State>{folder.state}</State>

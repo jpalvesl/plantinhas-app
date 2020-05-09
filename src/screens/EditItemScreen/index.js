@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { Container, Content, Input, DiameterInput, FitaButton, FitaLabel, SubmitButton, TextContent } from './styles';
 
 function EditItemScreen() {
   const [fita, setFita] = useState(false)
+  const [name, setName] = useState('')
+  const [height, setHeight] = useState('')
+  const [diameters, setDiameters] = useState('')
 
   const navigation = useNavigation();
+  const route = useRoute();
+
+  const plant = route.params.plant
+
+  useEffect(() => {
+    setName(plant.name)
+    setHeight(String(plant.height))
+    setDiameters(String(plant.diameter))
+  }, [])
 
   function FitaToggle() {
     setFita((state) => !state)
@@ -21,12 +33,12 @@ function EditItemScreen() {
     <Container>
       <Content>
         <Input 
-          value={'Nome da planta'}
-          onChangeText={() => {}}
+          value={name}
+          onChangeText={(text) => setName(text)}
         />
         <Input 
-          value={'Altura'}
-          onChangeText={() => {}}
+          value={height}
+          onChangeText={(text) => setHeight(text)}
         />
 
         <DiameterInput>
@@ -35,8 +47,8 @@ function EditItemScreen() {
             <FitaLabel>Fita</FitaLabel>
           </FitaButton>
           <Input 
-          value={'Diam1, Diam2...'}
-          onChangeText={() => {}}
+          value={diameters}
+          onChangeText={(text) => setDiameters(text)}
           />
         </DiameterInput>
         <SubmitButton onPress={changeInformations}>
