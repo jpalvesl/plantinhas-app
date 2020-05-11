@@ -97,7 +97,10 @@ function AddItemScreen() {
     }
 
     //precisa acontecer o refresh
-    navigation.navigate('FolderInside', { folder })
+    navigation.reset({
+      index: 1,
+      routes: [{name: 'Home'}, {name: 'FolderInside', params: {folder}}]
+    })
   }
 
   return (
