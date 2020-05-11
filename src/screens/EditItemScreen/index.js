@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { AsyncStorage } from 'react-native';
 
 import { Container, Content, Input, DiameterInput, FitaButton, FitaLabel, SubmitButton, TextContent } from './styles';
 
@@ -25,8 +26,42 @@ function EditItemScreen() {
     setFita((state) => !state)
   }
 
-  function changeInformations() {
-    navigation.navigate('FolderInside')
+  function getIndex(arrayPlants) {
+    var counter = 0
+    for (let plantComparator of arrayPlants) {
+      console.log(plantComparator)
+      if (plant.name == plantComparator.name) return counter
+      counter++
+    }
+    return -1
+  }
+
+  async function changeInformations() {
+    try {
+      const data = await AsyncStorage.getItem('plants')
+      if (data !== null) {
+        const arrayPlants = JSON.parse(data)
+        const indexPlant = getIndex(arrayPlants)
+        
+        const plantEdited = arrayPlants[indexPlant]
+        
+        plantEdited.name = name
+        plantEdited.diameter = diameters
+        plantEdited.fita = fita
+        plantEdited.height = height
+
+        await AsyncStorage.setItem('plants', JSON.stringify(arrayPlants))
+      }
+    } catch (error) {
+      alert('Erro ao mudar informações')
+    }
+
+
+
+    navigation.reset({
+      index: 1,
+      routes: [{ name: 'Home' }, { name: 'FolderInside', params: { folder: { city: plant.city, state: plant.uf } } }]
+    })
   }
 
   return (
