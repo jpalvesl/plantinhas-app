@@ -21,7 +21,7 @@ function CreateFolderScreen() {
   }
 
   async function addFolder() {
-    if (folderVerification(folders, {city, state})) {
+    if (folderVerification(folders, { city: city.trim() , state: state.trim()})) {
       try {
         folders.push({city, state})
         await AsyncStorage.setItem(

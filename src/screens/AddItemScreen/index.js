@@ -6,10 +6,12 @@ import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location'
 
 import { Container, Content, Input, DiameterInput, FitaButton, FitaLabel, SubmitArea, SubmitButtonLocal, SubmitButtonOnline, TextContent } from './styles';
 
+import ParseStringAsArray from '../../utils/ParseStringAsArray';
+
 import api from '../../services/api';
 
 function AddItemScreen() {
-  const [fita, setFita] = useState(false)
+  const [string, setString] = useState(false)
   const [name, setName] = useState('');
   const [height, setHeight] = useState('');
   const [diameters, setDiameters] = useState('');
@@ -32,7 +34,7 @@ function AddItemScreen() {
   })
 
   function FitaToggle() {
-    setFita((state) => !state)
+    setString((state) => !state)
   }
 
   async function handleAddOnline() {
@@ -41,14 +43,28 @@ function AddItemScreen() {
     })
 
     const { latitude, longitude } = coords
-    const diameter = diameters.split(',')
+    const diameter = ParseStringAsArray(diameters)
     const date = new Date()
+    
+    if (!name){
+      alert('Nome inválido')
+      return 
+    }
+    else if (!Number(height)) {
+      alert('Altura inválida')
+      return
+    }
+    else if (!diameter || !diameters) {
+      alert('Diâmetros inválidos')
+      return 
+    }
+
 
     let plant = {
       name,
       city: folder.city,
       uf: folder.state,
-      fita,
+      string,
       diameter,
       height,
       latitude,
@@ -56,8 +72,7 @@ function AddItemScreen() {
       date
     }
 
-    //chamada a api
-
+    await api.post('/plants', plant)
 
     navigation.navigate('FolderInside')
   }
@@ -68,14 +83,28 @@ function AddItemScreen() {
     })
 
     const { latitude, longitude } = coords
-    const diameter = diameters.split(',')
+    const diameter = ParseStringAsArray(diameters)
     const date = new Date()
+    
+    if (!name){
+      alert('Nome inválido')
+      return 
+    }
+    else if (!Number(height)) {
+      alert('Altura inválida')
+      return
+    }
+    else if (!diameter || !diameters) {
+      alert('Diâmetros inválidos')
+      return 
+    }
+    
 
     let plant = {
       name,
       city: folder.city,
       uf: folder.state,
-      fita,
+      string,
       diameter,
       height,
       latitude,
@@ -121,7 +150,7 @@ function AddItemScreen() {
 
         <DiameterInput>
           <FitaButton onPress={FitaToggle}>
-            <Ionicons name="ios-checkmark" size={24} color={fita? '#000': '#fff'}/>
+            <Ionicons name="ios-checkmark" size={24} color={string? '#000': '#fff'}/>
             <FitaLabel>Fita</FitaLabel>
           </FitaButton>
           <Input 
