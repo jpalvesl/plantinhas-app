@@ -6,7 +6,7 @@ import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location'
 
 import { Container, Content, Input, DiameterInput, FitaButton, FitaLabel, SubmitArea, SubmitButtonLocal, SubmitButtonOnline, TextContent } from './styles';
 
-import ParseStringAsArray from '../../utils/ParseStringAsArray';
+import parseStringAsArray from '../../utils/parseStringAsArray';
 
 import api from '../../services/api';
 
@@ -43,7 +43,7 @@ function AddItemScreen() {
     })
 
     const { latitude, longitude } = coords
-    const diameter = ParseStringAsArray(diameters)
+    const diameter = parseStringAsArray(diameters)
     const date = new Date()
     
     if (!name){
@@ -83,7 +83,7 @@ function AddItemScreen() {
     })
 
     const { latitude, longitude } = coords
-    const diameter = ParseStringAsArray(diameters)
+    const diameter = parseStringAsArray(diameters)
     const date = new Date()
     
     if (!name){

@@ -5,6 +5,8 @@ import { AsyncStorage } from 'react-native';
 
 import { Container, Counter, List, ItemList, ItemContent, AddItemButton, PlantName, MeanDiameter, Fita, Bold, Height } from './styles';
 
+import getMeanOfArray from '../../utils/getMeanOfArray';
+
 function FolderInsideScreen() {
   const [plants, setPlants] = useState([]);
   
@@ -61,7 +63,9 @@ function FolderInsideScreen() {
           <ItemList onPress={() => NavigateToEditItem(plant)}>
             <ItemContent>
               <PlantName>{plant.name}</PlantName>
-              <MeanDiameter><Bold>Diâmetro(s)</Bold>: {plant.diameter[0]}m</MeanDiameter>
+              <MeanDiameter>
+                <Bold>Diâmetro(s)</Bold>: {getMeanOfArray(plant.diameter)}m
+              </MeanDiameter>
               <Height><Bold>Altura</Bold>: {plant.height}m</Height>
               <Fita><Bold>Fita</Bold>: {plant.string? <Ionicons name="ios-checkmark" size={16} />: ''}</Fita>
             </ItemContent>

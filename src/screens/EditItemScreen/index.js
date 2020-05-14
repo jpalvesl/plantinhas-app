@@ -5,6 +5,8 @@ import { AsyncStorage } from 'react-native';
 
 import { Container, Content, Input, DiameterInput, FitaButton, FitaLabel, SubmitButton, TextContent } from './styles';
 
+import parseStringAsArray from '../../utils/parseStringAsArray';
+
 function EditItemScreen() {
   const [fita, setFita] = useState(false)
   const [name, setName] = useState('')
@@ -19,7 +21,7 @@ function EditItemScreen() {
   useEffect(() => {
     setName(plant.name)
     setHeight(String(plant.height))
-    setDiameters(String(plant.diameter))
+    setDiameters(plant.diameter.join(', '))
   }, [])
 
   function FitaToggle() {
@@ -46,7 +48,7 @@ function EditItemScreen() {
         const plantEdited = arrayPlants[indexPlant]
         
         plantEdited.name = name
-        plantEdited.diameter = diameters
+        plantEdited.diameter = parseStringAsArray(diameters)
         plantEdited.fita = fita
         plantEdited.height = height
 
