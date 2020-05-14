@@ -33,7 +33,7 @@ function EditItemScreen() {
     var counter = 0
     for (let plantComparator of arrayPlants) {
       console.log(plantComparator)
-      if (plant.name == plantComparator.name) return counter
+      if (plant.date == plantComparator.date) return counter
       counter++
     }
     return -1
