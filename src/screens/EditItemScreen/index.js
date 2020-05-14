@@ -8,7 +8,7 @@ import { Container, Content, Input, DiameterInput, FitaButton, FitaLabel, Submit
 import parseStringAsArray from '../../utils/parseStringAsArray';
 
 function EditItemScreen() {
-  const [fita, setFita] = useState(false)
+  const [string, setString] = useState(false)
   const [name, setName] = useState('')
   const [height, setHeight] = useState('')
   const [diameters, setDiameters] = useState('')
@@ -22,10 +22,11 @@ function EditItemScreen() {
     setName(plant.name)
     setHeight(String(plant.height))
     setDiameters(plant.diameter.join(', '))
+    setString(plant.string)
   }, [])
 
   function FitaToggle() {
-    setFita((state) => !state)
+    setString((state) => !state)
   }
 
   function getIndex(arrayPlants) {
@@ -49,9 +50,23 @@ function EditItemScreen() {
         
         plantEdited.name = name
         plantEdited.diameter = parseStringAsArray(diameters)
-        plantEdited.fita = fita
-        plantEdited.height = height
+        plantEdited.string = string
+        
+        if (!name){
+          alert('Nome inválido')
+          return 
+        }
+        else if (!Number(height)) {
+          alert('Altura inválida')
+          return
+        }
+        else if (!plantEdited.diameter || !diameters) {
+          alert('Diâmetros inválidos')
+          return 
+        }
 
+        plantEdited.height = Number(height)
+      
         await AsyncStorage.setItem('plants', JSON.stringify(arrayPlants))
       }
     } catch (error) {
@@ -59,7 +74,7 @@ function EditItemScreen() {
     }
 
 
-
+    
     navigation.reset({
       index: 1,
       routes: [{ name: 'Home' }, { name: 'FolderInside', params: { folder: { city: plant.city, state: plant.uf } } }]
@@ -76,16 +91,18 @@ function EditItemScreen() {
         <Input 
           value={height}
           onChangeText={(text) => setHeight(text)}
+          keyboardType="numeric"
         />
 
         <DiameterInput>
           <FitaButton onPress={FitaToggle}>
-            <Ionicons name="ios-checkmark" size={24} color={fita? '#000': '#fff'}/>
+            <Ionicons name="ios-checkmark" size={24} color={string? '#000': '#fff'}/>
             <FitaLabel>Fita</FitaLabel>
           </FitaButton>
           <Input 
           value={diameters}
           onChangeText={(text) => setDiameters(text)}
+          keyboardType="numeric"
           />
         </DiameterInput>
         <SubmitButton onPress={changeInformations}>

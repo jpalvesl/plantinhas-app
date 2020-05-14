@@ -66,7 +66,7 @@ function AddItemScreen() {
       uf: folder.state,
       string,
       diameter,
-      height,
+      height: Number(height),
       latitude,
       longitude,
       date
@@ -106,7 +106,7 @@ function AddItemScreen() {
       uf: folder.state,
       string,
       diameter,
-      height,
+      height: Number(height),
       latitude,
       longitude,
       date
