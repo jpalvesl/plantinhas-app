@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import HomeRoute from './routes/HomeRoute';
 import ListRoute from './routes/ListRoute';
-import SyncRoute from './routes/SyncRoute';
+import SyncScreen from './screens/SyncScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -62,7 +62,7 @@ function Navigation() {
         />
         <Tab.Screen 
           name="Sync" 
-          component={SyncRoute} 
+          component={SyncScreen} 
           options={{
             title: 'Sincronizar',
             
