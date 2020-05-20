@@ -21,46 +21,25 @@ export const PlantName = styled.Text`
   margin-bottom: 16px;
 `;
 
-export const Bold = styled.Text`
-  font-weight: bold;
-`;
-
 export const CardTopic = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-top: 8px;
 `;
 
-export const MeanDiameterLabel = styled.Text`
+export const CardText = styled.Text`
   font-size: 14px;
 `;
 
-export const DiametersLabel = styled.Text`
-  font-size: 14px;
-`;
-
-export const HeightLabel = styled.Text`
-  font-size: 14px;
-`;
-
-
-export const FitaLabel = styled.Text`
-  font-size: 14px;
-`;
-
-export const CityLabel = styled.Text`
-  font-size: 14px;
-`;
-
-export const StateLabel = styled.Text`
-  font-size: 14px;
+export const Bold = styled.Text`
+  font-weight: bold;
 `;
 
 export const BackButon = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: 36px;
+  margin-top: 20px;
 `;
 
 export const ButonLabel = styled.Text`

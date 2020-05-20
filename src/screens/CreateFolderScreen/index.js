@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Alert } from 'react-native';
 
 import { Container, CheckButton, Input, InputView } from './styles';
 
@@ -29,7 +29,7 @@ function CreateFolderScreen() {
           JSON.stringify(folders)
         )
       } catch (error) {
-        alert('Erro ao adicionar nova pasta, tente novamente')
+        Alert.alert('Erro ao criar pasta', 'Tente novamente')
       }
       navigation.reset({
         index: 0,
@@ -37,7 +37,7 @@ function CreateFolderScreen() {
       });
     }
     else {
-      alert('Já existe uma pasta com esses nomes')
+      Alert.alert('Pasta existente', 'Altere ao menos um dos campos, para poder cadastrar uma nova pasta')
     }
   }
 
@@ -53,6 +53,7 @@ function CreateFolderScreen() {
         placeholder="Estado"
         value={state}
         onChangeText={text => setState(text)}
+        autoCapitalize='characters'
       />
       </InputView>
 

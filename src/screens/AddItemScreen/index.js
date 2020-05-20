@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Alert } from 'react-native';
 import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
 
 import { Container, Content, Input, DiameterInput, FitaButton, FitaLabel, SubmitArea, SubmitButtonLocal, SubmitButtonOnline, TextContent } from './styles';
@@ -23,10 +23,9 @@ function AddItemScreen() {
 
   useEffect(() => {
     async function init() {
-      //console.log('Add', folder)
       const { status } = await requestPermissionsAsync();
       if (status !== 'granted') {
-        alert('Permission to access location was denied');
+        Alert.alert('Permission to access location was denied');
       }
     }
 
@@ -46,16 +45,16 @@ function AddItemScreen() {
     const diameter = parseStringAsArray(diameters)
     const date = new Date()
     
-    if (!name){
-      alert('Nome inválido')
+    if (!name.trim()){
+      Alert.alert('Nome inválido', `O nome "${name}" não é valido, insira ao menos caractere para cadastrar a planta`)
       return 
     }
     else if (!Number(height)) {
-      alert('Altura inválida')
+      Alert.alert('Altura inválida', `A altura tem o seguinte formato, "3.1" e não "${height}"`)
       return
     }
     else if (!diameter || !diameters) {
-      alert('Diâmetros inválidos')
+      Alert.alert('Diâmetros inválidos', `O formato para diâmetro(s) é o seguinte "3.1, 2, 0.3", todos os espaços são ignorados`)
       return 
     }
 
@@ -86,16 +85,16 @@ function AddItemScreen() {
     const diameter = parseStringAsArray(diameters)
     const date = new Date()
     
-    if (!name){
-      alert('Nome inválido')
+    if (!name.trim()){
+      Alert.alert('Nome inválido', `O nome "${name}" não é valido, insira ao menos caractere para cadastrar a planta`)
       return 
     }
     else if (!Number(height)) {
-      alert('Altura inválida')
+      Alert.alert('Altura inválida', `A altura tem o seguinte formato, "3.1" e não "${height}"`)
       return
     }
     else if (!diameter || !diameters) {
-      alert('Diâmetros inválidos')
+      Alert.alert('Diâmetros inválidos', `O formato para diâmetro(s) é o seguinte "3.1, 2, 0.3", todos os espaços são ignorados`)
       return 
     }
     
@@ -119,10 +118,9 @@ function AddItemScreen() {
         
         newData.push(plant)
         await AsyncStorage.setItem('plants', JSON.stringify(newData))
-        console.log(newData)
       } 
     } catch (error) {
-      alert('Erro ao acessar plantas da pasta')
+      Alert.alert('Erro ao acessar plantas da pasta')
     }
 
     //precisa acontecer o refresh
@@ -154,7 +152,7 @@ function AddItemScreen() {
             <FitaLabel>Fita</FitaLabel>
           </FitaButton>
           <Input 
-          placeholder="Diâmetros"
+          placeholder="Diâmetro(s)"
           value={diameters}
           onChangeText={(text) => setDiameters(text)}
           keyboardType="numeric"

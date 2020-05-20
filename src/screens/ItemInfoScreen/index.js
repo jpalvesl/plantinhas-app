@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
-import { Container, Card, CardTopic, Bold, PlantName, DiametersLabel, MeanDiameterLabel, FitaLabel, HeightLabel, CityLabel, StateLabel, BackButon, ButonLabel } from './styles';
+import { Container, Card, CardTopic, Bold, PlantName, CardText, BackButon, ButonLabel } from './styles';
 
 import getMeanOfArray from '../../utils/getMeanOfArray';
 
@@ -17,25 +17,24 @@ function ItemInfoScreen() {
       <Card>
         <PlantName>{plant.name}</PlantName>
 
+        <CardText><Bold>Diâmetro(s)</Bold>: {plant.diameter.join(', ')}</CardText>
+        <CardText><Bold>Diâmetro Médio</Bold>: {getMeanOfArray(plant.diameter)}</CardText>
+        <CardText>
+          <Bold>Fita</Bold>: {plant.string ? <Ionicons name="ios-checkmark" size={16}/> : ''}
+        </CardText>
+
+
         <CardTopic>
-          <DiametersLabel><Bold>Diâmetro(s)</Bold>: {plant.diameter.join(', ')}</DiametersLabel>
-          <MeanDiameterLabel><Bold>Média</Bold>: {getMeanOfArray(plant.diameter)}</MeanDiameterLabel>
-          <FitaLabel>
-            <Bold>Fita</Bold>: {plant.string ? <Ionicons name="ios-checkmark" size={16}/> : ''}
-          </FitaLabel>
+          <CardText><Bold>Altura</Bold>: {plant.height}</CardText>
         </CardTopic>
 
         <CardTopic>
-          <HeightLabel><Bold>Altura</Bold>: {plant.height}</HeightLabel>
-        </CardTopic>
-
-        <CardTopic>
-          <CityLabel><Bold>Cidade</Bold>: {plant.city}</CityLabel>
-          <StateLabel><Bold>Estado</Bold>: {plant.uf}</StateLabel>
+          <CardText><Bold>Cidade</Bold>: {plant.city}</CardText>
+          <CardText><Bold>Estado</Bold>: {plant.uf}</CardText>
         </CardTopic>
 
         <BackButon onPress={() => navigation.goBack()}>
-          <Ionicons name="md-arrow-back" size={40} color="#f00"/>
+          <Ionicons name="md-arrow-back" size={26} color="#f00"/>
           <ButonLabel>Voltar</ButonLabel>
         </BackButon>
       </Card>
