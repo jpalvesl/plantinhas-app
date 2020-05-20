@@ -52,7 +52,6 @@ export const SubmitButtonLocal = styled.TouchableOpacity`
   justify-content: space-around;
   padding: 0 16px;
   margin-right: 8px;
-
 `;
 
 export const SubmitButtonOnline = styled.TouchableOpacity`

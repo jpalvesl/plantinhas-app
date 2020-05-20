@@ -5,23 +5,21 @@ export const Container = styled.SafeAreaView`
   background: #132B35;
 `;
 
-export const List = styled.FlatList`
-  margin: 0 16px;
-  margin-top: 24px;
-`;
-
 export const Counter = styled.Text`
   color: #fff;
   font-size: 20px;
   text-align: center;
-  margin: 0 8px;
+  margin: 16px 8px 8px 8px;
+`;
+
+export const List = styled.FlatList`
+  margin: 0 16px;
+  margin-top: 8px;
 `;
 
 export const Bold = styled.Text`
   font-weight: bold;
 `;
-
-
 
 export const ItemList = styled.TouchableHighlight`
 `;
@@ -37,8 +35,6 @@ export const ItemContent = styled.View`
   justify-content: space-between;
 `;
 
-
-
 export const City = styled.Text`
   color: #000;
   font-size: 24px;
@@ -48,8 +44,6 @@ export const State = styled.Text`
   color: #000;
   font-size: 24px;
 `;
-
-
 
 export const AddButton = styled.TouchableOpacity`
   background: #F8D3D355;

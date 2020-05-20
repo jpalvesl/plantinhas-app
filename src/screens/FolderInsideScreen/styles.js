@@ -9,12 +9,12 @@ export const Counter = styled.Text`
   color: #fff;
   font-size: 20px;
   text-align: center;
-  margin: 0 8px;
+  margin: 16px 8px 8px 8px;
 `;
 
 export const List = styled.FlatList`
   margin: 0 16px;
-  margin-top: 24px;
+  margin-top: 8px;
 `;
 
 export const ItemList = styled.TouchableHighlight``;

@@ -11,6 +11,7 @@ function ListInside() {
   return (
     <Stack.Navigator
       screenOptions={{
+        headerShown: false,
         headerTintColor: '#fff',
         headerTitleAlign: 'center',
         headerStyle: {
@@ -40,10 +41,34 @@ const Tab = createMaterialTopTabNavigator();
 
 function ListRoute() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="All" component={ListInside} />
-      <Tab.Screen name="Cities" component={ListInside} />
-      <Tab.Screen name="Parts" component={ListInside} />
+    <Tab.Navigator tabBarOptions={{
+      activeTintColor: '#00f',
+      inactiveTintColor: '#fff',
+      style: {
+        backgroundColor: '#000'
+      },
+    }}>
+      <Tab.Screen 
+        name="All" 
+        component={ListInside} 
+        options={{
+          title: 'Todas'
+        }}
+      />
+      <Tab.Screen 
+        name="Cities" 
+        component={ListInside} 
+        options={{
+          title: 'Cidades'
+        }}
+      />
+      <Tab.Screen 
+        name="Parts" 
+        component={ListInside} 
+        options={{
+          title: 'Partes'
+        }}
+      />
     </Tab.Navigator>
   );
 }

@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { AsyncStorage } from 'react-native';
 
-import { Container, List, ItemList, ItemContent, PlantName, MeanDiameter, Fita, Bold, Height } from './styles';
+import { Container, Counter, List, ItemList, ItemContent, PlantName, MeanDiameter, Fita, Bold, Height } from './styles';
 
 import api from '../../services/api';
 
@@ -48,6 +48,8 @@ function FolderInsideScreen() {
   
   return (
     <Container>
+      <Counter>Existem um total de <Bold>{plants.length}</Bold> planta(s) cadastrada(s) no total</Counter>
+
       <List 
         data={plants}
         keyExtractor={(item, index) => `${item.name}_${index}`}

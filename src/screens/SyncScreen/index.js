@@ -30,7 +30,10 @@ function SyncScreen() {
       Alert.alert('Erro ao sincronizar com o servidor', 'Tente novamente em alguns segundos')
     }
 
-    navigation.navigate('Home')
+    navigation.reset({
+      index: 0,
+      routes:[{ name: 'Home' }]
+    })
   }
 
 
