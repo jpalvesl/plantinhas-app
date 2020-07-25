@@ -62,10 +62,10 @@ function FolderInsideScreen() {
             <ItemContent>
               <PlantName>{plant.name}</PlantName>
               <MeanDiameter>
-                <Bold>Diâmetro(s)</Bold>: {getMeanOfArray(plant.diameter)}m
+                <Bold>Diâmetro Médio</Bold>: {getMeanOfArray(plant.diameter)}cm {plant.string ? '*' : ''}
               </MeanDiameter>
               <Height><Bold>Altura</Bold>: {plant.height}m</Height>
-              <Fita><Bold>Fita</Bold>: {plant.string? <Ionicons name="ios-checkmark" size={16} />: ''}</Fita>
+              <Fita><Bold>Fita</Bold>: {plant.string? 'sim' : 'não'}</Fita>
             </ItemContent>
           </ItemList>
           )

@@ -85,6 +85,8 @@ function AddItemScreen() {
     const diameter = parseStringAsArray(diameters)
     const date = new Date()
     
+    console.log(diameter)
+
     if (!name.trim()){
       Alert.alert('Nome inválido', `O nome "${name}" não é valido, insira ao menos caractere para cadastrar a planta`)
       return 
@@ -140,7 +142,7 @@ function AddItemScreen() {
           keyboardType="default"
           />
         <Input 
-          placeholder="Altura"
+          placeholder="Altura(m)"
           value={height}
           onChangeText={(text) => setHeight(text)}
           keyboardType="numeric"
@@ -152,7 +154,7 @@ function AddItemScreen() {
             <FitaLabel>Fita</FitaLabel>
           </FitaButton>
           <Input 
-          placeholder="Diâmetro(s)"
+          placeholder="Diâmetros(cm)"
           value={diameters}
           onChangeText={(text) => setDiameters(text)}
           keyboardType="numeric"

@@ -1,13 +1,14 @@
 import styled from 'styled-components/native';
+import colors from '../../styles/colors';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background: #132B35;
+  background: ${colors.bg};
   justify-content: center;
 `;
 
 export const Card = styled.View`
-  background: #F8D3D3;
+  background: ${colors.box};
   height: 250px;
   margin: 0 24px;
   border-radius: 16px;

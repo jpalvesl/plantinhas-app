@@ -17,15 +17,15 @@ function ItemInfoScreen() {
       <Card>
         <PlantName>{plant.name}</PlantName>
 
-        <CardText><Bold>Diâmetro(s)</Bold>: {plant.diameter.join(', ')}</CardText>
-        <CardText><Bold>Diâmetro Médio</Bold>: {getMeanOfArray(plant.diameter)}</CardText>
+        <CardText><Bold>Diâmetro(s)</Bold>: {plant.diameter.map(item => item.toFixed(2)).join('cm, ')}cm</CardText>
+        <CardText><Bold>Diâmetro Médio</Bold>: {getMeanOfArray(plant.diameter)}cm</CardText>
         <CardText>
           <Bold>Fita</Bold>: {plant.string ? <Ionicons name="ios-checkmark" size={16}/> : ''}
         </CardText>
 
 
         <CardTopic>
-          <CardText><Bold>Altura</Bold>: {plant.height}</CardText>
+          <CardText><Bold>Altura</Bold>: {plant.height}m</CardText>
         </CardTopic>
 
         <CardTopic>

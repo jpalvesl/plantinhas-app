@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
 import { AsyncStorage } from 'react-native';
 
 import { Container, Counter, List, ItemList, ItemContent, PlantName, MeanDiameter, Fita, Bold, Height } from './styles';
@@ -59,10 +58,10 @@ function FolderInsideScreen() {
             <ItemContent>
               <PlantName>{plant.name}</PlantName>
               <MeanDiameter>
-                <Bold>Diâmetro(s)</Bold>: {getMeanOfArray(plant.diameter)}m
+                <Bold>Diâmetro(s)</Bold>: {getMeanOfArray(plant.diameter)}cm {plant.string ? '*': ''}
               </MeanDiameter>
               <Height><Bold>Altura</Bold>: {plant.height}m</Height>
-              <Fita><Bold>Fita</Bold>: {plant.string? <Ionicons name="ios-checkmark" size={16} />: ''}</Fita>
+              <Fita><Bold>Fita</Bold>: {plant.string? 'sim' : 'não'}</Fita>
             </ItemContent>
           </ItemList>
           )

@@ -1,8 +1,9 @@
 import styled from 'styled-components/native';
+import colors from '../../styles/colors';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background: #132B35;
+  background: ${colors.bg};
 `;
 
 export const Counter = styled.Text`
@@ -25,7 +26,7 @@ export const ItemList = styled.TouchableHighlight`
 `;
 
 export const ItemContent = styled.View`
-  background: #F8D3D3;
+  background: ${colors.box};
   height: 80px;
   border-radius: 8px;
   margin-bottom: 8px;

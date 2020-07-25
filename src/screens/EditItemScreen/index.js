@@ -85,10 +85,12 @@ function EditItemScreen() {
     <Container>
       <Content>
         <Input 
+          placeholder="Nome popular"
           value={name}
           onChangeText={(text) => setName(text)}
         />
         <Input 
+          placeholder="Altura(m)"
           value={height}
           onChangeText={(text) => setHeight(text)}
           keyboardType="numeric"

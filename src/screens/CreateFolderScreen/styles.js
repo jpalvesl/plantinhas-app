@@ -1,8 +1,9 @@
 import styled from 'styled-components/native';
+import colors from '../../styles/colors';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background: #132B35;
+  background: ${colors.bg};
 `;
 
 export const InputView = styled.View`
