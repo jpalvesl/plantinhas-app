@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { AsyncStorage } from 'react-native';
+import { YellowBox } from 'react-native';
 
 import { Container, Content, Input, DiameterInput, FitaButton, FitaLabel, SubmitButton, TextContent } from './styles';
+import { MainContext } from '../../contexts/MainContext';
 
 import parseStringAsArray from '../../utils/parseStringAsArray';
+  
+YellowBox.ignoreWarnings([
+  'Non-serializable values were found in the navigation state',
+]);
 
 function EditItemScreen() {
+  const { plants, attPlants } = useContext(MainContext);
+
   const [string, setString] = useState(false)
   const [name, setName] = useState('')
   const [height, setHeight] = useState('')
@@ -32,7 +39,6 @@ function EditItemScreen() {
   function getIndex(arrayPlants) {
     var counter = 0
     for (let plantComparator of arrayPlants) {
-      console.log(plantComparator)
       if (plant.date == plantComparator.date) return counter
       counter++
     }
@@ -41,44 +47,36 @@ function EditItemScreen() {
 
   async function changeInformations() {
     try {
-      const data = await AsyncStorage.getItem('plants')
-      if (data !== null) {
-        const arrayPlants = JSON.parse(data)
-        const indexPlant = getIndex(arrayPlants)
-        
-        const plantEdited = arrayPlants[indexPlant]
-        
-        plantEdited.name = name
-        plantEdited.diameter = parseStringAsArray(diameters)
-        plantEdited.string = string
-        
-        if (!name){
-          alert('Nome inválido')
-          return 
-        }
-        else if (!Number(height)) {
-          alert('Altura inválida')
-          return
-        }
-        else if (!plantEdited.diameter || !diameters) {
-          alert('Diâmetros inválidos')
-          return 
-        }
+      const formatedDiamter = parseStringAsArray(diameters)
 
-        plantEdited.height = Number(height)
-      
-        await AsyncStorage.setItem('plants', JSON.stringify(arrayPlants))
+      if (!name){
+        alert('Nome inválido')
+        return 
       }
+      else if (!Number(height)) {
+        alert('Altura inválida')
+        return
+      }
+      else if (!formatedDiamter || !diameters) {
+        alert('Diâmetro(s) inválidos')
+        return 
+      }
+
+      const indexPlant = getIndex(plants)
+      const plantEdited = plants[indexPlant]
+      
+      plantEdited.name = name
+      plantEdited.diameter = formatedDiamter
+      plantEdited.string = string
+      
+      plantEdited.height = Number(height)
+      
+      attPlants(plants)
     } catch (error) {
-      alert('Erro ao mudar informações')
+      console.error(error)
     }
-
-
     
-    navigation.reset({
-      index: 1,
-      routes: [{ name: 'Home' }, { name: 'FolderInside', params: { folder: { city: plant.city, state: plant.uf } } }]
-    })
+    navigation.goBack()
   }
 
   return (

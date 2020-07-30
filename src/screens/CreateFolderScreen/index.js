@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { AsyncStorage, Alert } from 'react-native';
 
 import { Container, CheckButton, Input, InputView } from './styles';
+import { MainContext } from '../../contexts/MainContext';
 
 function CreateFolderScreen() {
+  const { folders, addFolder } = useContext(MainContext)
+
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   
   const navigation = useNavigation();
-  const route = useRoute();
 
-  const folders = route.params.folders
   
   function folderVerification(folders, fold) {
     const result = folders.filter((element) => (fold.state === element.state && fold.city === element.city))
@@ -20,24 +21,11 @@ function CreateFolderScreen() {
     return !result.length
   }
 
-  async function addFolder() {
+  async function handleAddFolder() {
     if (folderVerification(folders, { city: city.trim() , state: state.trim()})) {
-      try {
-        folders.push({city, state})
-        await AsyncStorage.setItem(
-          'folders',
-          JSON.stringify(folders)
-        )
-      } catch (error) {
-        Alert.alert('Erro ao criar pasta', 'Tente novamente')
-      }
-      navigation.reset({
-        index: 0,
-        routes: [{ name: 'Home' }],
-      });
-    }
-    else {
-      Alert.alert('Pasta existente', 'Altere ao menos um dos campos, para poder cadastrar uma nova pasta')
+      addFolder({city, state})
+
+      navigation.goBack()
     }
   }
 
@@ -57,7 +45,7 @@ function CreateFolderScreen() {
       />
       </InputView>
 
-      <CheckButton onPress={addFolder}>
+      <CheckButton onPress={handleAddFolder}>
         <Ionicons name="ios-checkmark" size={30} />
       </CheckButton>
     </Container>

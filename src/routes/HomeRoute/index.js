@@ -7,6 +7,7 @@ import FolderInsideScreen from '../../screens/FolderInsideScreen';
 import EditItemScreen from '../../screens/EditItemScreen';
 import AddItemScreen from '../../screens/AddItemScreen';
 
+
 const HomeStack = createStackNavigator();
 
 function HomeRoute() {

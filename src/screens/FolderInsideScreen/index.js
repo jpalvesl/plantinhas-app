@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { AsyncStorage, Alert } from 'react-native';
 
 import { Container, Counter, List, ItemList, ItemContent, AddItemButton, PlantName, MeanDiameter, Fita, Bold, Height } from './styles';
+import { MainContext } from '../../contexts/MainContext';
 
 import getMeanOfArray from '../../utils/getMeanOfArray';
 
 function FolderInsideScreen() {
-  const [plants, setPlants] = useState([]);
+  const { plants } = useContext(MainContext);
+
+  const [filteredPlants, setFilteredPlants] = useState([]);
   
   const navigation = useNavigation();
   const route = useRoute();
@@ -20,25 +22,9 @@ function FolderInsideScreen() {
       return arrayPlants.filter((plant) => (plant.city === folder.city && plant.uf === folder.state))
     }
 
-    async function LoadPlants() {
-      try {
-        const data = await AsyncStorage.getItem('plants')
-        if (data !== null) {
-          const ObjectData = JSON.parse(data)
-          
-          const FilteredData = plantFilter(ObjectData)
-          setPlants(FilteredData)
-        }
-        else {
-          await AsyncStorage.setItem('plants', '[]')
-        }
-      } catch (error) {
-        Alert.alert('Não foi possivel carregar as plantas')
-      }
-    }
-
-    LoadPlants()
-  }, [])
+    const FilteredData = plantFilter(plants)
+    setFilteredPlants(FilteredData)
+  }, [plants])
 
 
   function NavigateToEditItem(plant){
@@ -51,10 +37,10 @@ function FolderInsideScreen() {
   
   return (
     <Container>
-      <Counter>Essa pasta contém <Bold>{plants.length} planta(s)</Bold></Counter>
+      <Counter>Essa pasta contém <Bold>{filteredPlants.length} planta(s)</Bold></Counter>
 
       <List 
-        data={plants}
+        data={filteredPlants}
         keyExtractor={(item, index) => `${item.name}_${index}`}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: plant }) => (

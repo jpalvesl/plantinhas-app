@@ -1,34 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { AsyncStorage, Alert } from 'react-native';
 
 import { Container, Counter, Bold, List, ItemList, ItemContent, City, State, AddButton } from './styles';
+import { MainContext } from '../../contexts/MainContext';
 
 function HomeScreen() {
-  const [folders, setFolders] = useState([]);
+  const { folders } = useContext(MainContext);
 
   const navigation = useNavigation();
 
-  useEffect(() => {
-    async function LoadFolders() {
-      try {
-        const data = await AsyncStorage.getItem('folders')
-        if (data !== null) {
-          setFolders(JSON.parse(data))
-        } 
-        else Alert.alert('Não há pastas cadastradas offline', 'Crie ao menos uma para começar a catalogar') 
-        
-      } catch (error) {
-        Alert.alert('Erro ao carregar pastas, tente novamente')
-      }
-    }
-
-    LoadFolders()
-  }, [])
-
   function NavigateToCreateFolder() {
-    navigation.navigate('CreateFolder', { folders })
+    navigation.navigate('CreateFolder')
   }
 
   return (

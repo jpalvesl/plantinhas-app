@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StatusBar } from 'react-native';
 
 import Navigation from './src/Navigation';
+import { MainProvider } from './src/contexts/MainContext'
 
 function App() {
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="#000" />
-      <Navigation />
+      <MainProvider>
+        <Navigation />
+      </MainProvider>
     </>
   );
 }

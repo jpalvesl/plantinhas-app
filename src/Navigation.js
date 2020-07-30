@@ -7,6 +7,8 @@ import HomeRoute from './routes/HomeRoute';
 import ListRoute from './routes/ListRoute';
 import SyncScreen from './screens/SyncScreen';
 
+import { active, inactive } from './styles/colors';
+
 const Tab = createBottomTabNavigator();
 
 const icons = {
@@ -42,8 +44,8 @@ function Navigation() {
             borderTopColor: 'rgba(255, 255, 255, 0.2)',
             justifyContent: 'center',
           },
-          activeTintColor: '#00f',
-          inactiveTintColor: '#000',
+          activeTintColor: active,
+          inactiveTintColor: inactive,
         }}
       >
         <Tab.Screen 

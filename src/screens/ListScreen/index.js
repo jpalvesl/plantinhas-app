@@ -1,43 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { AsyncStorage } from 'react-native';
 
 import { Container, Counter, List, ItemList, ItemContent, PlantName, MeanDiameter, Fita, Bold, Height } from './styles';
+import { MainContext } from '../../contexts/MainContext';
 
 import api from '../../services/api';
 
 import getMeanOfArray from '../../utils/getMeanOfArray';
 
 function FolderInsideScreen() {
+  const { syncPlants, attSyncPlants } = useContext(MainContext);
   const [plants, setPlants] = useState([]);
 
   const navigation = useNavigation();
 
   useEffect(() => {
-    async function init() {
+    (async () => {
       try {
         const response = await api.get('/all')
-        setPlants(response.data)
-        
-        await AsyncStorage.setItem('syncPlants', JSON.stringify(response.data))
-        return
+        attSyncPlants(response.data)
       } catch (error) {
         alert('Erro ao acessar servidor')
       }
-
-      try {
-        const data = await AsyncStorage.getItem('syncPlants')
-
-        if (data !== null) {
-          setPlants(JSON.parse(data))
-        }
-
-      } catch (error) {
-        alert('Erro ao acessar plantas presenter no celular')
-      }
-    }        
-
-    init()
+    })()      
   }, [])
 
 
@@ -47,10 +33,10 @@ function FolderInsideScreen() {
   
   return (
     <Container>
-      <Counter>Existem um total de <Bold>{plants.length}</Bold> planta(s) cadastrada(s) no total</Counter>
+      <Counter>Existem um total de <Bold>{syncPlants.length}</Bold> planta(s) cadastrada(s) no total</Counter>
 
       <List 
-        data={plants}
+        data={syncPlants}
         keyExtractor={(item, index) => `${item.name}_${index}`}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: plant }) => (
