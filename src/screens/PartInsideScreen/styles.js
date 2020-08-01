@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
+
 import colors from '../../styles/colors';
 
 export const Container = styled.SafeAreaView`
-  flex: 1;
   background: ${colors.bg};
+  flex: 1;
 `;
 
 export const Counter = styled.Text`
@@ -24,39 +25,47 @@ export const ItemList = styled.View`
   border-radius: 8px;
   margin-bottom: 8px;
   padding: 8px;
-  padding-right: 60px;
   position: relative;
 `;
 
-export const ActionButtons = styled.View`
-  width: 70px;
-  position: absolute;
-  justify-content: space-between;
-  flex-direction: row;
-  bottom: 10px;
-  right: 10px;
-`;
-
-export const ItemText = styled.Text`
-  font-size: 18px;
-  margin-bottom: 8px;
-`;
-
-export const Action = styled.TouchableOpacity``;
-
-export const TrashButton = styled.TouchableOpacity`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 8px;
+export const PlantName = styled.Text`
+  font-size: 24px;
+  text-align: center;
 `;
 
 export const Bold = styled.Text`
   font-weight: bold;
 `;
 
+
+export const MeanDiameter = styled.Text`
+  font-size: 14px;
+`;
+
+export const Height = styled.Text`
+  font-size: 14px;
+`;
+
+
+export const Fita = styled.Text`
+  font-size: 14px;
+`;
+
+export const EditButton = styled.TouchableOpacity`
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+`;
+
+export const TrashButton = styled.TouchableOpacity`
+  position: absolute;
+  padding: 10px;
+  top: 0px;
+  right: 0px;
+`;
+
 export const AddItemButton = styled.TouchableOpacity`
-  background: #fffa;
+  background: #c4c4c4ee;
   width: 60px;
   height: 60px;
   border-radius: 30px;

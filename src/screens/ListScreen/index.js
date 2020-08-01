@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { AsyncStorage } from 'react-native';
 
 import { Container, Counter, List, ItemList, ItemContent, PlantName, MeanDiameter, Fita, Bold, Height } from './styles';
 import { MainContext } from '../../contexts/MainContext';
@@ -11,7 +10,6 @@ import getMeanOfArray from '../../utils/getMeanOfArray';
 
 function FolderInsideScreen() {
   const { syncPlants, attSyncPlants } = useContext(MainContext);
-  const [plants, setPlants] = useState([]);
 
   const navigation = useNavigation();
 

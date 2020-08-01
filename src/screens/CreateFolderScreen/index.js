@@ -23,8 +23,12 @@ function CreateFolderScreen() {
 
   async function handleAddFolder() {
     if (folderVerification(folders, { city: city.trim() , state: state.trim()})) {
-      addFolder({city, state})
-
+      addFolder({
+        city,
+        state,
+        parts: []
+      })
+      
       navigation.goBack()
     }
   }

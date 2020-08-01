@@ -6,7 +6,9 @@ import CreateFolderScreen from '../../screens/CreateFolderScreen';
 import FolderInsideScreen from '../../screens/FolderInsideScreen';
 import EditItemScreen from '../../screens/EditItemScreen';
 import AddItemScreen from '../../screens/AddItemScreen';
-
+import EditFolderScreen from '../../screens/EditFolderScreen';
+import AddPartScreen from '../../screens/AddPartScreen';
+import PartInsideScreen from '../../screens/PartInsideScreen';
 
 const HomeStack = createStackNavigator();
 
@@ -40,7 +42,7 @@ function HomeRoute() {
         name="FolderInside" 
         component={FolderInsideScreen} 
         options={{
-          title: 'Plantas não sincronizadas',
+          title: 'Parcelas',
         }}
       />
       <HomeStack.Screen 
@@ -53,6 +55,27 @@ function HomeRoute() {
       <HomeStack.Screen 
         name="AddItem" 
         component={AddItemScreen} 
+        options={{
+          headerShown: false,
+        }}
+      />
+      <HomeStack.Screen 
+        name="EditFolder" 
+        component={EditFolderScreen} 
+        options={{
+          headerShown: false,
+        }}
+      />
+      <HomeStack.Screen 
+        name="AddPart" 
+        component={AddPartScreen} 
+        options={{
+          headerShown: false,
+        }}
+      />
+      <HomeStack.Screen 
+        name="PartInside" 
+        component={PartInsideScreen} 
         options={{
           headerShown: false,
         }}

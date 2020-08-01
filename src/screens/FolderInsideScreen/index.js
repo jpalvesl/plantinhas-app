@@ -2,67 +2,57 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
-import { Container, Counter, List, ItemList, ItemContent, AddItemButton, PlantName, MeanDiameter, Fita, Bold, Height } from './styles';
+import { Container, Counter, List, ItemList, ItemText, Bold, ActionButtons, Action, TrashButton, AddItemButton } from './styles';
 import { MainContext } from '../../contexts/MainContext';
 
-import getMeanOfArray from '../../utils/getMeanOfArray';
 
 function FolderInsideScreen() {
-  const { plants } = useContext(MainContext);
 
-  const [filteredPlants, setFilteredPlants] = useState([]);
-  
-  const navigation = useNavigation();
-  const route = useRoute();
+  const navigation = useNavigation()
 
-  const folder = route.params.folder;
-
-  useEffect(() => {
-    function plantFilter(arrayPlants) {
-      return arrayPlants.filter((plant) => (plant.city === folder.city && plant.uf === folder.state))
-    }
-
-    const FilteredData = plantFilter(plants)
-    setFilteredPlants(FilteredData)
-  }, [plants])
-
-
-  function NavigateToEditItem(plant){
-    navigation.navigate('EditItem', { plant })
+  function NavigateToAddPart(part) {
+    navigation.navigate('AddPart')
   }
 
-  function NavigateToAddItem(){
-    navigation.navigate('AddItem', { folder })
+  function NavigateToPartInside(part) {
+    navigation.navigate('PartInside')
   }
-  
+
   return (
     <Container>
-      <Counter>Essa pasta contém <Bold>{filteredPlants.length} planta(s)</Bold></Counter>
-
+      <Counter>Essa pasta contém <Bold>{3} parcelas</Bold></Counter>
+    
       <List 
-        data={filteredPlants}
-        keyExtractor={(item, index) => `${item.name}_${index}`}
+        data={[0, 1, 2]}
+        keyExtractor={(item, index) => `${item}_${index}`}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item: plant }) => (
-          <ItemList onPress={() => NavigateToEditItem(plant)}>
-            <ItemContent>
-              <PlantName>{plant.name}</PlantName>
-              <MeanDiameter>
-                <Bold>Diâmetro Médio</Bold>: {getMeanOfArray(plant.diameter)}cm {plant.string ? '*' : ''}
-              </MeanDiameter>
-              <Height><Bold>Altura</Bold>: {plant.height}m</Height>
-              <Fita><Bold>Fita</Bold>: {plant.string? 'sim' : 'não'}</Fita>
-            </ItemContent>
+        renderItem={({ item: part }) => (
+          <ItemList>
+            <ItemText>Nome da parcela</ItemText>
+            <ItemText>NDVI: 1000</ItemText>
+
+            <ActionButtons>
+              <Action onPress={() => {}}>
+                <Ionicons name='ios-create' size={30} color='#000' />
+              </Action>
+              <Action onPress={() => NavigateToPartInside()}>
+                <Ionicons name='ios-open' size={30} color='#000' />
+              </Action>
+            </ActionButtons>
+
+            <TrashButton onPress={() => alert('Tem q excluir o item')}>
+              <Ionicons name='ios-trash' size={20} color='#000' />
+            </TrashButton>
           </ItemList>
           )
         }
       />
 
-      <AddItemButton onPress={NavigateToAddItem}>
-        <Ionicons name="ios-leaf" size={30} />
+      <AddItemButton onPress={() => NavigateToAddPart()}>
+        <Ionicons name='ios-add' size={40} color='#000'/>
       </AddItemButton>
     </Container>
-  );
+  )
 }
 
 export default FolderInsideScreen;

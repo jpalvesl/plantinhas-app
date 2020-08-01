@@ -27,13 +27,12 @@ export const ItemList = styled.TouchableHighlight`
 
 export const ItemContent = styled.View`
   background: ${colors.box};
-  height: 80px;
+  min-height: 100px;
   border-radius: 8px;
   margin-bottom: 8px;
-  padding: 0 16px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  padding: 8px;
+  padding-right: 60px;
+  position: relative;
 `;
 
 export const City = styled.Text`
@@ -44,6 +43,24 @@ export const City = styled.Text`
 export const State = styled.Text`
   color: #000;
   font-size: 24px;
+`;
+
+export const ActionButtons = styled.View`
+  width: 70px;
+  position: absolute;
+  justify-content: space-between;
+  flex-direction: row;
+  bottom: 10px;
+  right: 10px;
+`;
+
+export const Action = styled.TouchableOpacity``;
+
+export const TrashButton = styled.TouchableOpacity`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px;
 `;
 
 export const AddButton = styled.TouchableOpacity`
