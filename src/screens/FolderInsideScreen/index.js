@@ -7,35 +7,39 @@ import { MainContext } from '../../contexts/MainContext';
 
 
 function FolderInsideScreen() {
+  const { folders } = useContext(MainContext);
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
+  const route = useRoute();
 
-  function NavigateToAddPart(part) {
-    navigation.navigate('AddPart')
+  const folderIndex = route.params.folderIndex
+
+  function NavigateToAddPart() {
+    navigation.navigate('AddPart', { folderIndex })
   }
 
-  function NavigateToPartInside(part) {
-    navigation.navigate('PartInside')
+  function NavigateToPartInside(folder, part) {
+    navigation.navigate('PartInside', { folder, part })
   }
 
   return (
     <Container>
-      <Counter>Essa pasta contém <Bold>{3} parcelas</Bold></Counter>
+      <Counter>Essa pasta contém <Bold>{folders[folderIndex].parts.length} parcelas</Bold></Counter>
     
       <List 
-        data={[0, 1, 2]}
-        keyExtractor={(item, index) => `${item}_${index}`}
+        data={folders[folderIndex].parts}
+        keyExtractor={(item, index) => `${item.name}_${index}`}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: part }) => (
           <ItemList>
-            <ItemText>Nome da parcela</ItemText>
-            <ItemText>NDVI: 1000</ItemText>
+            <ItemText>{part.name}</ItemText>
+            <ItemText>NDVI: {part.NDVI}</ItemText>
 
             <ActionButtons>
               <Action onPress={() => {}}>
                 <Ionicons name='ios-create' size={30} color='#000' />
               </Action>
-              <Action onPress={() => NavigateToPartInside()}>
+              <Action onPress={() => NavigateToPartInside(folders[folderIndex], part)}>
                 <Ionicons name='ios-open' size={30} color='#000' />
               </Action>
             </ActionButtons>

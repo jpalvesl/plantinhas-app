@@ -1,20 +1,21 @@
 import React, { createContext } from 'react';
 
-import useStorage from '../hooks/useStorage';
+import usePlants from '../hooks/usePlants';
+import useFolders from '../hooks/useFolders';
 
 const MainContext = createContext();
 
 
 function MainProvider ({ children }) {
-  const [plants, attPlants, addPlant] = useStorage('plants');
-  const [syncPlants, attSyncPlants, addSyncPlant] = useStorage('syncPlants');
-  const [folders, setFolders, addFolder] = useStorage('folders')
+  const [plants, attPlants, addPlant] = usePlants('plants');
+  const [syncPlants, attSyncPlants, addSyncPlant] = usePlants('syncPlants');
+  const [folders, addFolder, addPart] = useFolders('folders')
 
   return (
     <MainContext.Provider value={{ 
       plants, attPlants, addPlant,
       syncPlants, attSyncPlants, addSyncPlant,
-      folders, setFolders, addFolder 
+      folders, addFolder, addPart
       }}
     >
       {children}

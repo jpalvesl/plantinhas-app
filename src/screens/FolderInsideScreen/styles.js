@@ -46,9 +46,9 @@ export const Action = styled.TouchableOpacity``;
 
 export const TrashButton = styled.TouchableOpacity`
   position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 8px;
+  top: 0px;
+  right: 0px;
+  padding: 10px;
 `;
 
 export const Bold = styled.Text`
