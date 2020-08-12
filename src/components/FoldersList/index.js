@@ -16,7 +16,7 @@ function FoldersList({ folders }) {
   }
 
   return (
-    <List 
+     <List 
       data={folders}
       keyExtractor={({ city, state }) => `${city}_${state}`}
       showsVerticalScrollIndicator={false}
