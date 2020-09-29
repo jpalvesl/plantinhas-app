@@ -4,7 +4,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { Alert } from 'react-native';
 import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
 
-import { Container, Content, Input, DiameterInput, FitaButton, FitaLabel, SubmitArea, SubmitButtonLocal, SubmitButtonOnline, TextContent } from './styles';
+import { Container, Content, SubmitArea, SubmitButtonLocal, SubmitButtonOnline, TextContent } from './styles';
+
+import Header from '../../components/Header';
+import Input from '../../components/Input';
+import DiameterInput from '../../components/DiameterInput';
 
 import parseStringAsArray from '../../utils/parseStringAsArray';
 
@@ -34,7 +38,7 @@ function AddItemScreen() {
     })()
   })
 
-  function FitaToggle() {
+  function fitaToggle() {
     setString((state) => !state)
   }
 
@@ -88,46 +92,50 @@ function AddItemScreen() {
   }
 
   return (
-    <Container>
-      <Content>
-        <Input 
-          placeholder="Nome popular"
-          value={name}
-          onChangeText={(text) => setName(text)}
-          keyboardType="default"
-          />
-        <Input 
-          placeholder="Altura(m)"
-          value={height}
-          onChangeText={(text) => setHeight(text)}
-          keyboardType="numeric"
-        />
-
-        <DiameterInput>
-          <FitaButton onPress={FitaToggle}>
-            <Ionicons name="ios-checkmark" size={24} color={string? '#000': '#fff'}/>
-            <FitaLabel>Fita</FitaLabel>
-          </FitaButton>
+    <>
+      <Header
+        hasGoBack
+        title='Nova planta'
+      />
+      <Container>
+        <Content>
           <Input 
-          placeholder="Diâmetros(cm)"
-          value={diameters}
-          onChangeText={(text) => setDiameters(text)}
-          keyboardType="numeric"
+            label="Nome popular"          
+            placeholder="Ex: Pata de vaca"
+            value={name}
+            onChangeText={(text) => setName(text)}
+            keyboardType="default"
+            />
+          <Input 
+            label="Altura(m)"          
+            placeholder="Ex: 1"
+            value={height}
+            onChangeText={(text) => setHeight(text)}
+            keyboardType="numeric"
           />
-        </DiameterInput>
-        <SubmitArea>
-          <SubmitButtonLocal onPress={() => handleAddPlant('offline')}>
-            <TextContent>Adicionar local</TextContent>
-            <Ionicons name="ios-leaf" size={14} />
-          </SubmitButtonLocal>
 
-          <SubmitButtonOnline onPress={() => handleAddPlant('online')}>
-            <TextContent>Adicionar online</TextContent>
-            <Ionicons name="ios-leaf" size={14} />
-          </SubmitButtonOnline>
-        </SubmitArea>
-      </Content>
-    </Container>
+          <DiameterInput
+            fitaToggle={fitaToggle}
+            string={string}
+            placeholder="Ex: 1.5, 2.1, 1"
+            value={diameters}
+            onChangeText={(text) => setDiameters(text)}
+            keyboardType="numeric"
+          />
+          <SubmitArea>
+            <SubmitButtonLocal onPress={() => handleAddPlant('offline')}>
+              <TextContent>Adicionar local</TextContent>
+              <Ionicons name="ios-leaf" size={14} />
+            </SubmitButtonLocal>
+
+            <SubmitButtonOnline onPress={() => handleAddPlant('online')}>
+              <TextContent>Adicionar online</TextContent>
+              <Ionicons name="ios-leaf" size={14} />
+            </SubmitButtonOnline>
+          </SubmitArea>
+        </Content>
+      </Container>
+    </>
   );
 }
 

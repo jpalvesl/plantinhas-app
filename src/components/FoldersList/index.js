@@ -7,8 +7,8 @@ import { List, ItemContainer, ItemText, ActionButtons, Button, TrashButton } fro
 function FoldersList({ folders }) {
   const navigation = useNavigation()
 
-  function NavigateToEditFolder() {
-    navigation.navigate('EditFolder')
+  function NavigateToEditFolder(folderIndex, folder) {
+    navigation.navigate('EditFolder', { folderIndex, folder })
   }
 
   function NavigateToFolderInside(folderIndex) {
@@ -25,7 +25,7 @@ function FoldersList({ folders }) {
           <ItemText>{folder.city}</ItemText>
           <ItemText>{folder.state}</ItemText>
           <ActionButtons>
-            <Button onPress={NavigateToEditFolder}>
+            <Button onPress={() => NavigateToEditFolder(index, folder)}>
               <Ionicons name='md-create' size={30} color='#000' />
             </Button>
 

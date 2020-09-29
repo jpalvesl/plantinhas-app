@@ -4,7 +4,9 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { Container, Counter, Bold, AddButton } from './styles';
 import { MainContext } from '../../contexts/MainContext';
+
 import FoldersList from '../../components/FoldersList';
+import Header from '../../components/Header';
 
 function HomeScreen() {
   const { folders } = useContext(MainContext);
@@ -16,16 +18,25 @@ function HomeScreen() {
   }
 
   return (
-    <Container>
-      <Counter>Existem <Bold>{folders.length}</Bold> locais registrados</Counter>
-      <FoldersList 
-        folders={folders}
+    <>
+      <Header 
+        title="Locais de coleta"
+        rightButton={(
+          <AddButton onPress={NavigateToCreateFolder}>
+            <Ionicons name="ios-add" size={30} color="#000" />
+          </AddButton>
+        )}
       />
 
-      <AddButton onPress={NavigateToCreateFolder}>
-        <Ionicons name="ios-add" size={30} />
-      </AddButton>
-    </Container>
+      <Container>
+        <Counter>Existem <Bold>{folders.length}</Bold> locais registrados</Counter>
+        <FoldersList 
+          folders={folders} 
+        />
+
+        
+      </Container>
+    </>
   );
 }
 

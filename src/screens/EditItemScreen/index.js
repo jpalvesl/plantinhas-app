@@ -3,8 +3,12 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { YellowBox } from 'react-native';
 
-import { Container, Content, Input, DiameterInput, FitaButton, FitaLabel, SubmitButton, TextContent } from './styles';
+import { Container, Content, SubmitButton, TextContent } from './styles';
 import { MainContext } from '../../contexts/MainContext';
+
+import Header from '../../components/Header';
+import Input from '../../components/Input';
+import DiameterInput from '../../components/DiameterInput';
 
 import parseStringAsArray from '../../utils/parseStringAsArray';
   
@@ -32,7 +36,7 @@ function EditItemScreen() {
     setString(plant.string)
   }, [])
 
-  function FitaToggle() {
+  function fitaToggle() {
     setString((state) => !state)
   }
 
@@ -80,37 +84,43 @@ function EditItemScreen() {
   }
 
   return (
-    <Container>
-      <Content>
-        <Input 
-          placeholder="Nome popular"
-          value={name}
-          onChangeText={(text) => setName(text)}
-        />
-        <Input 
-          placeholder="Altura(m)"
-          value={height}
-          onChangeText={(text) => setHeight(text)}
-          keyboardType="numeric"
-        />
-
-        <DiameterInput>
-          <FitaButton onPress={FitaToggle}>
-            <Ionicons name="ios-checkmark" size={24} color={string? '#000': '#fff'}/>
-            <FitaLabel>Fita</FitaLabel>
-          </FitaButton>
+    <>
+      <Header 
+        hasGoBack
+        title='Editar planta'
+      />
+      <Container>
+        <Content>
           <Input 
-          value={diameters}
-          onChangeText={(text) => setDiameters(text)}
-          keyboardType="numeric"
+            label="Nome popular"
+            placeholder="Ex: Pata de vaca"
+            value={name}
+            onChangeText={(text) => setName(text)}
           />
-        </DiameterInput>
-        <SubmitButton onPress={changeInformations}>
-          <TextContent>Finalizar edição</TextContent>
-          <Ionicons name="ios-leaf" size={20} />
-        </SubmitButton>
-      </Content>
-    </Container>
+          <Input 
+            label="Altura(m)"
+            placeholder="Ex: 2"
+            value={height}
+            onChangeText={(text) => setHeight(text)}
+            keyboardType="numeric"
+          />
+
+          <DiameterInput
+            fitaToggle={fitaToggle}
+            string={string}
+            placeholder='Ex: 1.5, 2.1, 1'
+            value={diameters}
+            onChangeText={(text) => setDiameters(text)}
+            keyboardType="numeric"
+          />
+        
+          <SubmitButton onPress={changeInformations}>
+            <TextContent>Finalizar edição</TextContent>
+            <Ionicons name="ios-leaf" size={20} />
+          </SubmitButton>
+        </Content>
+      </Container>
+    </>
   );
 }
 

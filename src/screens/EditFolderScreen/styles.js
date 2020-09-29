@@ -1,30 +1,27 @@
 import styled from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 
 import colors from '../../styles/colors';
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.ScrollView`
   background: ${colors.bg};
   flex: 1;
 `;
 
-export const TextInput = styled.TextInput`
-  height: 50px;
-  border-radius: 25px;
-  padding-left: 20px;
-  background: #fff;
-  margin: 0 16px;
-  margin-top: 8px;
-  font-size: 24px;
-`; 
+export const InputView = styled.View`
+  margin-top: 16px;
+`;
 
-export const CheckButton = styled.TouchableOpacity`
-  background: #fffa;
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
+export const CheckButton = styled(RectButton)`
+  background-color: #fff;
+  height: 40px;
+  margin: 8px 16px;
+  border-radius: 12px;
+  padding: 0 8px;
   align-items: center;
   justify-content: center;
+`;
+
+export const ButtonText = styled.Text`
+  font-size: 16px;
 `;

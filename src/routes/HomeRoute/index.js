@@ -9,6 +9,7 @@ import AddItemScreen from '../../screens/AddItemScreen';
 import EditFolderScreen from '../../screens/EditFolderScreen';
 import AddPartScreen from '../../screens/AddPartScreen';
 import PartInsideScreen from '../../screens/PartInsideScreen';
+import EditPartScreen from '../../screens/EditPartScreen';
 
 const HomeStack = createStackNavigator();
 
@@ -17,68 +18,44 @@ function HomeRoute() {
     <HomeStack.Navigator
       initialRouteName="Home"
       screenOptions={{
-        headerTitleAlign: 'center',
-        headerTintColor: '#fff',
-        headerStyle: {
-          backgroundColor: '#000',
-        }
+        headerShown: false,
       }}
     >
       <HomeStack.Screen 
         name="Home" 
         component={HomeScreen}
-        options={{
-          title: 'Pastas',
-        }}
       />
       <HomeStack.Screen 
         name="CreateFolder" 
         component={CreateFolderScreen}
-        options={{
-          title: 'Adicionar nova pasta',
-        }} 
       />
       <HomeStack.Screen 
         name="FolderInside" 
         component={FolderInsideScreen} 
-        options={{
-          title: 'Parcelas',
-        }}
       />
       <HomeStack.Screen 
         name="EditItem" 
         component={EditItemScreen} 
-        options={{
-          title: 'Editar planta',
-        }}
       />
       <HomeStack.Screen 
         name="AddItem" 
         component={AddItemScreen} 
-        options={{
-          headerShown: false,
-        }}
       />
       <HomeStack.Screen 
         name="EditFolder" 
         component={EditFolderScreen} 
-        options={{
-          headerShown: false,
-        }}
       />
       <HomeStack.Screen 
         name="AddPart" 
         component={AddPartScreen} 
-        options={{
-          headerShown: false,
-        }}
       />
       <HomeStack.Screen 
         name="PartInside" 
         component={PartInsideScreen} 
-        options={{
-          headerShown: false,
-        }}
+      />
+      <HomeStack.Screen 
+        name="EditPart" 
+        component={EditPartScreen} 
       />
     </HomeStack.Navigator>
   );

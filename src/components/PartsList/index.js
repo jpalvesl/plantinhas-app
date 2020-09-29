@@ -11,6 +11,10 @@ function PartsList({ folders, folderIndex }) {
     navigation.navigate('PartInside', { folder, part })
   }
 
+  function NavigateToEditPart() {
+    navigation.navigate('EditPart')
+  }
+
   return (
     <List 
       data={folders[folderIndex].parts}
@@ -22,7 +26,7 @@ function PartsList({ folders, folderIndex }) {
           <ItemText>NDVI: {part.NDVI}</ItemText>
 
           <ActionButtons>
-            <Button onPress={() => {}}>
+            <Button onPress={() => NavigateToEditPart()}>
               <Ionicons name='md-create' size={30} color='#000' />
             </Button>
             <Button onPress={() => NavigateToPartInside(folders[folderIndex], part)}>

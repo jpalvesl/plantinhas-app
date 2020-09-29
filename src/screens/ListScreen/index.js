@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { Picker } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { Container, Counter, List, ItemList, ItemContent, PlantName, MeanDiameter, Fita, Bold, Height } from './styles';
@@ -9,6 +10,9 @@ import api from '../../services/api';
 import getMeanOfArray from '../../utils/getMeanOfArray';
 
 function FolderInsideScreen() {
+  const [selectedValue, setSelectedValue] = useState('')
+  const [parts, setParts] = useState(['a', 'b', 'c'])
+
   const { syncPlants, attSyncPlants } = useContext(MainContext);
 
   const navigation = useNavigation();
@@ -31,6 +35,16 @@ function FolderInsideScreen() {
   
   return (
     <Container>
+
+      <Picker
+        style={{ height: 50, width: '100%', backgroundColor: '#fff' }}
+        selectedValue={selectedValue}
+        onValueChange={(itemValue) => setSelectedValue(itemValue)}
+      >
+        {parts.map(item => (
+          <Picker.Item key={item} label={item} value={item} />
+        ))}
+      </Picker>
       <Counter>Existem um total de <Bold>{syncPlants.length}</Bold> planta(s) cadastrada(s) no total</Counter>
 
       <List 

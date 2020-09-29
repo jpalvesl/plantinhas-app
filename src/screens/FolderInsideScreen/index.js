@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
-import { Container, Counter, List, ItemList, ItemText, Bold, ActionButtons, Action, TrashButton, AddItemButton } from './styles';
+import { Container, Counter, Bold, AddButton } from './styles';
 import { MainContext } from '../../contexts/MainContext';
 
+import Header from '../../components/Header'
+import PartsList from '../../components/PartsList'
 
 function FolderInsideScreen() {
   const { folders } = useContext(MainContext);
@@ -18,44 +20,26 @@ function FolderInsideScreen() {
     navigation.navigate('AddPart', { folderIndex })
   }
 
-  function NavigateToPartInside(folder, part) {
-    navigation.navigate('PartInside', { folder, part })
-  }
-
   return (
-    <Container>
-      <Counter>Essa pasta contém <Bold>{folders[folderIndex].parts.length} parcelas</Bold></Counter>
-    
-      <List 
-        data={folders[folderIndex].parts}
-        keyExtractor={(item, index) => `${item.name}_${index}`}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item: part }) => (
-          <ItemList>
-            <ItemText>{part.name}</ItemText>
-            <ItemText>NDVI: {part.NDVI}</ItemText>
-
-            <ActionButtons>
-              <Action onPress={() => {}}>
-                <Ionicons name='ios-create' size={30} color='#000' />
-              </Action>
-              <Action onPress={() => NavigateToPartInside(folders[folderIndex], part)}>
-                <Ionicons name='ios-open' size={30} color='#000' />
-              </Action>
-            </ActionButtons>
-
-            <TrashButton onPress={() => alert('Tem q excluir o item')}>
-              <Ionicons name='ios-trash' size={20} color='#000' />
-            </TrashButton>
-          </ItemList>
-          )
-        }
+    <>
+      <Header 
+        hasGoBack
+        title='Parcelas'
+        rightButton={(
+          <AddButton onPress={NavigateToAddPart}>
+            <Ionicons name="ios-add" size={30} color="#000" />
+          </AddButton>
+        )}
       />
-
-      <AddItemButton onPress={() => NavigateToAddPart()}>
-        <Ionicons name='ios-add' size={40} color='#000'/>
-      </AddItemButton>
-    </Container>
+      <Container>
+        <Counter>Essa pasta contém <Bold>{folders[folderIndex].parts.length} parcelas</Bold></Counter>
+        
+        <PartsList 
+          folders={folders}
+          folderIndex={folderIndex}
+        />
+      </Container>
+    </>
   )
 }
 

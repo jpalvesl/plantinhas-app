@@ -23,7 +23,23 @@ function useFolders(key) {
     }
   }
 
-  return [folders, addFolder, addPart]
+  async function editFolder(folderIndex, newFolder) {
+    try {
+      const newFolders = folders.map((folder, index) => {
+        if (folderIndex === index) {
+          return newFolder
+        }
+        return folder
+      })
+      await AsyncStorage.setItem(key ,JSON.stringify(newFolders))
+      setFolders(newFolders)
+    } catch (error) {
+      console.error('Erro ao editar a pasta')
+    }
+    
+  }
+
+  return [folders, addFolder, addPart, editFolder]
 }
 
 export default useFolders;

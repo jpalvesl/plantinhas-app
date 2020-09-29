@@ -1,41 +1,27 @@
-import React, { useState, useContext } from 'react';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
+import React, { useState, useEffect } from 'react';
 
-import { Container, Wrapper, OkButton, ButtonText } from './styles';
-import { MainContext } from '../../contexts/MainContext';
-
+import { Container, Wrapper,  OkButton, ButtonText } from './styles';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 
-function AddPart() {
-  const { addPart } = useContext(MainContext);
-
+function EditPartScreen() {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [NDVI, setNDVI] = useState('');
 
-  const navigation = useNavigation();
-  const route = useRoute();
+  useEffect(() => {
 
-  const folderIndex = route.params.folderIndex
+  }, [])
 
-  function handleAddPart() {
-    const part = {
-      name,
-      location,
-      NDVI: Number(NDVI)
-    }
-    
-    addPart(folderIndex, part)
-    navigation.goBack()
+  function handleEditPart() {
+
   }
 
   return (
     <>
       <Header
         hasGoBack
-        title='Nova parcela'
+        title='Editar parcela'
       />
       <Container>
         <Wrapper>
@@ -60,8 +46,8 @@ function AddPart() {
             onChangeText={(text) => setNDVI(text)}
           />
             
-          <OkButton onPress={handleAddPart}>
-            <ButtonText>Cadastrar nova parcela</ButtonText>
+          <OkButton onPress={handleEditPart}>
+            <ButtonText>Editar parcela</ButtonText>
           </OkButton>
         </Wrapper>
       </Container>
@@ -69,4 +55,4 @@ function AddPart() {
   )
 }
 
-export default AddPart;
+export default EditPartScreen;

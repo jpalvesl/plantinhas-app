@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import colors from '../../styles/colors';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.ScrollView`
   flex: 1;
@@ -7,30 +8,16 @@ export const Container = styled.ScrollView`
 `;
 
 export const Content = styled.SafeAreaView`
-  margin: 24px 16px 0 16px;
+  margin: 24px 0 0 0;
 `;
 
-export const Input = styled.TextInput`
+export const FitaButton = styled(RectButton)`
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   background: #fff;
-  color: #000;
-  height: 50px;
-  font-size: 24px;
-  border-radius: 32px;
+  margin-top: auto;
   margin-bottom: 8px;
-  padding: 0 16px;
-  flex: 1;
-`;
-
-export const DiameterInput = styled.View`
-  flex-direction: row;
-`;
-
-export const FitaButton = styled.TouchableOpacity`
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  background: #fff;
-  margin-right: 8px;
   align-items: center;
   justify-content: center;
 `;
@@ -39,10 +26,11 @@ export const FitaLabel = styled.Text`
   font-size: 14px;
 `;
 
-export const SubmitButton = styled.TouchableOpacity`
+export const SubmitButton = styled(RectButton)`
   background: #91BC34;
   height: 50px;
-  border-radius: 32px;
+  border-radius: 12px;
+  margin: 0 16px;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;

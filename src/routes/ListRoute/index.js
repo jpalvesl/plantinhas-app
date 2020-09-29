@@ -12,26 +12,15 @@ function ListInside() {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        headerTintColor: '#fff',
-        headerTitleAlign: 'center',
-        headerStyle: {
-          backgroundColor: '#000'
-        }
       }}
     >
       <Stack.Screen 
         name="List" 
         component={ListScreen} 
-        options={{
-          title: 'Plantas sincronizadas',
-        }}
       />
       <Stack.Screen 
         name="ItemInfo" 
         component={ItemInfoScreen} 
-        options={{
-          headerShown: false,
-        }}
       />
     </Stack.Navigator>
   );
@@ -56,17 +45,10 @@ function ListRoute() {
         }}
       />
       <Tab.Screen 
-        name="Cities" 
-        component={ListInside} 
-        options={{
-          title: 'Cidades'
-        }}
-      />
-      <Tab.Screen 
         name="Parts" 
         component={ListInside} 
         options={{
-          title: 'Partes'
+          title: 'Parcelas'
         }}
       />
     </Tab.Navigator>

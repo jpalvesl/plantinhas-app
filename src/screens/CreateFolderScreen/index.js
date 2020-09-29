@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
-import { AsyncStorage, Alert } from 'react-native';
 
-import { Container, CheckButton, Input, InputView } from './styles';
+import { Container, CheckButton, InputView, ButtonText } from './styles';
 import { MainContext } from '../../contexts/MainContext';
+
+import Header from '../../components/Header';
+import Input from '../../components/Input';
 
 function CreateFolderScreen() {
   const { folders, addFolder } = useContext(MainContext)
@@ -34,25 +35,33 @@ function CreateFolderScreen() {
   }
 
   return (
-    <Container>
-      <InputView>
-        <Input 
-        placeholder="Cidade"
-        value={city}
-        onChangeText={text => setCity(text)}
+    <>
+      <Header 
+        title='Novo local'
+        hasGoBack
       />
-      <Input 
-        placeholder="Estado"
-        value={state}
-        onChangeText={text => setState(text)}
-        autoCapitalize='characters'
-      />
-      </InputView>
+      <Container>
+        <InputView>
+          <Input
+            label="Cidade"
+            placeholder="Ex: Campina Grande"
+            value={city}
+            onChangeText={text => setCity(text)}
+          />
+          <Input 
+            label="Estado"
+            placeholder="Ex: PB"
+            value={state}
+            onChangeText={text => setState(text)}
+            autoCapitalize='characters'
+          />
+        </InputView>
 
-      <CheckButton onPress={handleAddFolder}>
-        <Ionicons name="ios-checkmark" size={30} />
-      </CheckButton>
-    </Container>
+        <CheckButton onPress={handleAddFolder}>
+          <ButtonText>Cadastrar novo local de coleta</ButtonText>
+        </CheckButton>
+      </Container>
+    </>
   );
 }
 
