@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { YellowBox } from 'react-native';
+import { LogBox } from 'react-native';
 
 import { Container, Content, SubmitButton, TextContent } from './styles';
 import { MainContext } from '../../contexts/MainContext';
@@ -12,7 +12,7 @@ import DiameterInput from '../../components/DiameterInput';
 
 import parseStringAsArray from '../../utils/parseStringAsArray';
   
-YellowBox.ignoreWarnings([
+LogBox.ignoreAllLogs([
   'Non-serializable values were found in the navigation state',
 ]);
 
