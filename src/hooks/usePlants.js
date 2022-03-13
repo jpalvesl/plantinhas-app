@@ -1,5 +1,5 @@
 import useStorage from './useStorage';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function usePlants(key) {
   const [plants, setPlants] = useStorage(key);

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { AsyncStorage, Alert } from 'react-native';
+import { Alert } from 'react-native';
 
 import { Container, SyncButton, ButtonLabel } from './styles';
 import { MainContext } from '../../contexts/MainContext';

@@ -12,7 +12,7 @@ function Header({ title, hasGoBack, rightButton }) {
       <Content>
         {hasGoBack && (
           <BackButton onPress={goBack}>
-            <Ionicons name="ios-arrow-round-back" size={30} color="#000" />
+            <Ionicons name="ios-arrow-back" size={30} color="#000" />
           </BackButton> 
         )}
 

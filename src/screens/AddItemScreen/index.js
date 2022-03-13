@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Alert } from 'react-native';
-import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
+import { requestForegroundPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
 
 import { Container, Content, SubmitArea, SubmitButtonLocal, SubmitButtonOnline, TextContent } from './styles';
 
@@ -31,8 +31,8 @@ function AddItemScreen() {
 
   useEffect(() => {
     (async() => {
-      const { status } = await requestPermissionsAsync();
-      if (status !== 'granted') {
+      const data = await requestForegroundPermissionsAsync();
+      if (data.status !== 'granted') {
         Alert.alert('Permissão para acessar localização negada');
       }
     })()

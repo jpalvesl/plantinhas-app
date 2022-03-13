@@ -12,8 +12,8 @@ import DiameterInput from '../../components/DiameterInput';
 
 import parseStringAsArray from '../../utils/parseStringAsArray';
   
-LogBox.ignoreAllLogs([
-  'Non-serializable values were found in the navigation state',
+LogBox.ignoreLogs([
+  'Warning: Non-serializable values were found in the navigation state',
 ]);
 
 function EditItemScreen() {
