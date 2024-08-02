@@ -12,7 +12,7 @@ function DiameterInput({ fitaToggle, string, ...props }) {
         <FitaButton
           onPress={fitaToggle}
         >
-          <Ionicons name="ios-checkmark" size={24} color={string? '#000': '#fff'}/>
+          <Ionicons name="checkmark" size={24} color={string? '#000': '#fff'}/>
             <FitaLabel>Fita</FitaLabel>
         </FitaButton>
 

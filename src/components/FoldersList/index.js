@@ -26,16 +26,16 @@ function FoldersList({ folders }) {
           <ItemText>{folder.state}</ItemText>
           <ActionButtons>
             <Button onPress={() => NavigateToEditFolder(index, folder)}>
-              <Ionicons name='md-create' size={30} color='#000' />
+              <Ionicons name='create' size={30} color='#000' />
             </Button>
 
             <Button onPress={() => NavigateToFolderInside(index)}>
-              <Ionicons name='md-open' size={30} color='#000' />
+              <Ionicons name='open' size={30} color='#000' />
             </Button>
           </ActionButtons>
 
           <TrashButton onPress={() => alert('Tem q excluir o item')}>
-            <Ionicons name='md-trash' size={20} color='#000' />
+            <Ionicons name='trash' size={20} color='#000' />
           </TrashButton>
         </ItemContainer>
         )

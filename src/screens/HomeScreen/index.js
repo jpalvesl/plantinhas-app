@@ -23,7 +23,7 @@ function HomeScreen() {
         title="Locais de coleta"
         rightButton={(
           <AddButton onPress={NavigateToCreateFolder}>
-            <Ionicons name="ios-add" size={30} color="#000" />
+            <Ionicons name="add" size={30} color="#000" />
           </AddButton>
         )}
       />

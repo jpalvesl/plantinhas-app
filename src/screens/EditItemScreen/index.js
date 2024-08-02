@@ -116,7 +116,7 @@ function EditItemScreen() {
         
           <SubmitButton onPress={changeInformations}>
             <TextContent>Finalizar edição</TextContent>
-            <Ionicons name="ios-leaf" size={20} />
+            <Ionicons name="leaf" size={20} />
           </SubmitButton>
         </Content>
       </Container>

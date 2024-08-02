@@ -20,7 +20,7 @@ function ItemInfoScreen() {
         <CardText><Bold>Diâmetro(s)</Bold>: {plant.diameter.map(item => item.toFixed(2)).join('cm, ')}cm</CardText>
         <CardText><Bold>Diâmetro Médio</Bold>: {getMeanOfArray(plant.diameter)}cm</CardText>
         <CardText>
-          <Bold>Fita</Bold>: {plant.string ? <Ionicons name="ios-checkmark" size={16}/> : ''}
+          <Bold>Fita</Bold>: {plant.string ? <Ionicons name="checkmark" size={16}/> : ''}
         </CardText>
 
 
@@ -34,7 +34,7 @@ function ItemInfoScreen() {
         </CardTopic>
 
         <BackButon onPress={() => navigation.goBack()}>
-          <Ionicons name="md-arrow-back" size={26} color="#f00"/>
+          <Ionicons name="arrow-back" size={26} color="#f00"/>
           <ButonLabel>Voltar</ButonLabel>
         </BackButon>
       </Card>

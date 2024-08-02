@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Picker } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
 
 import { Container, Counter, List, ItemList, ItemContent, PlantName, MeanDiameter, Fita, Bold, Height } from './styles';
@@ -23,6 +23,7 @@ function FolderInsideScreen() {
         const response = await api.get('/all')
         attSyncPlants(response.data)
       } catch (error) {
+        console.log(error);
         alert('Erro ao acessar servidor')
       }
     })()      

@@ -27,7 +27,7 @@ function FolderInsideScreen() {
         title='Parcelas'
         rightButton={(
           <AddButton onPress={NavigateToAddPart}>
-            <Ionicons name="ios-add" size={30} color="#000" />
+            <Ionicons name="add" size={30} color="#000" />
           </AddButton>
         )}
       />

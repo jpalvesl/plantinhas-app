@@ -39,7 +39,7 @@ function PartInsideScreen() {
         title='Plantas da parcela'
         rightButton={(
           <AddButton onPress={() => NavigateToAddItem()}>
-            <Ionicons name="ios-add" size={30} />
+            <Ionicons name="add" size={30} />
           </AddButton>
         )}
       />

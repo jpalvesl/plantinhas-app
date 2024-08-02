@@ -125,12 +125,12 @@ function AddItemScreen() {
           <SubmitArea>
             <SubmitButtonLocal onPress={() => handleAddPlant('offline')}>
               <TextContent>Adicionar local</TextContent>
-              <Ionicons name="ios-leaf" size={14} />
+              <Ionicons name="leaf" size={14} />
             </SubmitButtonLocal>
 
             <SubmitButtonOnline onPress={() => handleAddPlant('online')}>
               <TextContent>Adicionar online</TextContent>
-              <Ionicons name="ios-leaf" size={14} />
+              <Ionicons name="leaf" size={14} />
             </SubmitButtonOnline>
           </SubmitArea>
         </Content>

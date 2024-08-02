@@ -28,11 +28,11 @@ function PlantsList({ filteredPlants }) {
           <ItemText><Bold>Fita</Bold>: {plant.string? 'sim' : 'não'}</ItemText>
         
           <TrashButton onPress={() => alert('deve apagar')}>
-            <Ionicons name='md-trash' size={20} color='#000' />
+            <Ionicons name='trash' size={20} color='#000' />
           </TrashButton>
 
           <EditButton onPress={() => NavigateToEditItem(plant)}>
-            <Ionicons name='md-create' size={30} color='#000' />
+            <Ionicons name='create' size={30} color='#000' />
           </EditButton>
         </ItemList>
         )

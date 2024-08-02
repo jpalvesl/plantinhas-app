@@ -27,10 +27,10 @@ function PartsList({ folders, folderIndex }) {
 
           <ActionButtons>
             <Button onPress={() => NavigateToEditPart()}>
-              <Ionicons name='md-create' size={30} color='#000' />
+              <Ionicons name='create' size={30} color='#000' />
             </Button>
             <Button onPress={() => NavigateToPartInside(folders[folderIndex], part)}>
-              <Ionicons name='md-open' size={30} color='#000' />
+              <Ionicons name='open' size={30} color='#000' />
             </Button>
           </ActionButtons>
 

@@ -14,15 +14,15 @@ const Tab = createBottomTabNavigator();
 const icons = {
   Home: {
     lib: Ionicons,
-    name: 'ios-home',
+    name: 'home',
   },
   List: {
     lib: Ionicons,
-    name: 'ios-list',
+    name: 'list',
   },
   Sync: {
     lib: Ionicons,
-    name: 'ios-sync',
+    name: 'sync',
   },
 }
 
